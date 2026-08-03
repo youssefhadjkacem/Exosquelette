@@ -1,0 +1,134 @@
+2026-07-14 07:08:24.597 | INFO     | myoconverter.O2MPipeline:O2MPipeline:52 - Start the conversion pipeline for : arm26_scaled
+2026-07-14 07:08:24.599 | INFO     | myoconverter.O2MPipeline:coordinate_kwargs:75 - Coordinate the input configurations, remove conflicts.
+2026-07-14 07:08:24.600 | INFO     | myoconverter.O2MPipeline:coordinate_kwargs:86 -    Checking configurations for step 2 conversion.
+2026-07-14 07:08:24.601 | INFO     | myoconverter.O2MPipeline:coordinate_kwargs:103 -        All good now.
+2026-07-14 07:08:24.602 | INFO     | myoconverter.O2MPipeline:coordinate_kwargs:119 -    Checking configurations for step 3 conversion.
+2026-07-14 07:08:24.614 | INFO     | myoconverter.O2MPipeline:coordinate_kwargs:136 -        All good now.
+2026-07-14 07:08:24.615 | INFO     | myoconverter.conversion_steps.O2MSteps:__init__:84 - Given OpenSim model file: C:\Users\youss\exosquelette\test\arm26_scaled.osim
+2026-07-14 07:08:24.616 | INFO     | myoconverter.conversion_steps.O2MSteps:__init__:85 - Reading mesh files from folder C:\OpenSim 4.5\Geometry
+2026-07-14 07:08:24.617 | INFO     | myoconverter.conversion_steps.O2MSteps:__init__:86 - Converted model will be saved in folder C:\Users\youss\exosquelette\mujoco_models
+2026-07-14 07:08:24.618 | INFO     | myoconverter.conversion_steps.O2MSteps:PipelineExecution:124 - Started step 1 conversion - cvt1.
+2026-07-14 07:08:25.048 | INFO     | myoconverter.xml.converter:convert:40 - Commencing the conversion procedure!
+2026-07-14 07:08:25.049 | INFO     | myoconverter.xml.converter:_parse_ground:138 - Parsing the ground
+2026-07-14 07:08:25.050 | INFO     | myoconverter.xml.parsers:parse:59 - [BodyParser: Ground] ground
+2026-07-14 07:08:25.052 | INFO     | myoconverter.xml.converter:_parse_constraints:147 - Starting to parse constraints
+2026-07-14 07:08:25.053 | INFO     | myoconverter.xml.converter:_parse_bodies_and_joints:80 - Starting to parse bodies, wrapping objects, and joints
+2026-07-14 07:08:25.053 | INFO     | myoconverter.xml.parsers:parse:59 - [BodyParser: Body] base
+2026-07-14 07:08:26.264 | INFO     | myoconverter.xml.parsers:parse:59 - [WrapObjectParser: WrapCylinder] TRIlongglen
+2026-07-14 07:08:26.266 | INFO     | myoconverter.xml.parsers:parse:59 - [JointParser: WeldJoint] offset
+2026-07-14 07:08:26.267 | INFO     | myoconverter.xml.parsers:parse:59 - [BodyParser: Body] r_humerus
+2026-07-14 07:08:26.313 | INFO     | myoconverter.xml.parsers:parse:59 - [WrapObjectParser: WrapEllipsoid] TRIlonghh
+2026-07-14 07:08:26.315 | INFO     | myoconverter.xml.parsers:parse:59 - [WrapObjectParser: WrapEllipsoid] BIClonghh
+2026-07-14 07:08:26.316 | INFO     | myoconverter.xml.parsers:parse:59 - [WrapObjectParser: WrapCylinder] TRI
+2026-07-14 07:08:26.317 | INFO     | myoconverter.xml.parsers:parse:59 - [JointParser: CustomJoint] r_shoulder
+2026-07-14 07:08:26.318 | INFO     | myoconverter.xml.parsers:parse:59 - [BodyParser: Body] r_ulna_radius_hand
+2026-07-14 07:08:26.917 | INFO     | myoconverter.xml.parsers:parse:59 - [JointParser: CustomJoint] r_elbow
+2026-07-14 07:08:26.919 | INFO     | myoconverter.xml.converter:_parse_forces:156 - Starting to parse forces, including path points and wrap paths
+2026-07-14 07:08:26.920 | INFO     | myoconverter.xml.parsers:parse:59 - [ForceParser: Thelen2003Muscle] TRIlong
+2026-07-14 07:08:26.921 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlong-P1
+2026-07-14 07:08:26.922 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlong-P2
+2026-07-14 07:08:26.922 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlong-P3
+2026-07-14 07:08:26.923 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlong-P4
+2026-07-14 07:08:26.924 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlong-P5
+2026-07-14 07:08:26.925 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapSetParser: PathWrapSet] 
+2026-07-14 07:08:26.927 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] TRIlong-wrap-cylinder1
+2026-07-14 07:08:26.931 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] TRIlong-wrap-ellipsoid
+2026-07-14 07:08:26.934 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] TRIlong-wrap-cylinder2
+2026-07-14 07:08:26.937 | INFO     | myoconverter.xml.parsers:parse:59 - [ForceParser: Thelen2003Muscle] TRIlat
+2026-07-14 07:08:26.938 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlat-P1
+2026-07-14 07:08:26.939 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlat-P2
+2026-07-14 07:08:26.940 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlat-P3
+2026-07-14 07:08:26.941 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlat-P4
+2026-07-14 07:08:26.942 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRIlat-P5
+2026-07-14 07:08:26.942 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapSetParser: PathWrapSet] 
+2026-07-14 07:08:26.943 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] pathwrap
+2026-07-14 07:08:26.947 | INFO     | myoconverter.xml.parsers:parse:59 - [ForceParser: Thelen2003Muscle] TRImed
+2026-07-14 07:08:26.948 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRImed-P1
+2026-07-14 07:08:26.949 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRImed-P2
+2026-07-14 07:08:26.949 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRImed-P3
+2026-07-14 07:08:26.950 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRImed-P4
+2026-07-14 07:08:26.951 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] TRImed-P5
+2026-07-14 07:08:26.952 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapSetParser: PathWrapSet] 
+2026-07-14 07:08:26.953 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] pathwrap
+2026-07-14 07:08:26.956 | INFO     | myoconverter.xml.parsers:parse:59 - [ForceParser: Thelen2003Muscle] BIClong
+2026-07-14 07:08:26.957 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P1
+2026-07-14 07:08:26.958 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P2
+2026-07-14 07:08:26.959 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P3
+2026-07-14 07:08:26.960 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P4
+2026-07-14 07:08:26.961 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P5
+2026-07-14 07:08:26.961 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P6
+2026-07-14 07:08:26.962 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P7
+2026-07-14 07:08:26.963 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P8
+2026-07-14 07:08:26.964 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BIClong-P9
+2026-07-14 07:08:26.964 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapSetParser: PathWrapSet] 
+2026-07-14 07:08:26.965 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] pathwrap
+2026-07-14 07:08:26.968 | INFO     | myoconverter.xml.parsers:parse:59 - [ForceParser: Thelen2003Muscle] BICshort
+2026-07-14 07:08:26.968 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BICshort-P1
+2026-07-14 07:08:26.969 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BICshort-P2
+2026-07-14 07:08:26.970 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BICshort-P3
+2026-07-14 07:08:26.971 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BICshort-P4
+2026-07-14 07:08:26.972 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BICshort-P5
+2026-07-14 07:08:26.973 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BICshort-P6
+2026-07-14 07:08:26.973 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapSetParser: PathWrapSet] 
+2026-07-14 07:08:26.974 | INFO     | myoconverter.xml.parsers:parse:59 - [ForceParser: Thelen2003Muscle] BRA
+2026-07-14 07:08:26.975 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BRA-P1
+2026-07-14 07:08:26.976 | INFO     | myoconverter.xml.parsers:parse:59 - [PathPointParser: PathPoint] BRA-P2
+2026-07-14 07:08:26.976 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapSetParser: PathWrapSet] 
+2026-07-14 07:08:26.977 | INFO     | myoconverter.xml.parsers:parse:59 - [PathWrapParser: PathWrap] pathwrap
+2026-07-14 07:08:26.979 | INFO     | myoconverter.xml.converter:_parse_markers:165 - Starting to parse markers
+2026-07-14 07:08:26.980 | INFO     | myoconverter.xml.parsers:parse:59 - [MarkerParser: Marker] r_acromion
+2026-07-14 07:08:26.981 | INFO     | myoconverter.xml.parsers:parse:59 - [MarkerParser: Marker] r_humerus_epicondyle
+2026-07-14 07:08:26.982 | INFO     | myoconverter.xml.parsers:parse:59 - [MarkerParser: Marker] r_radius_styloid
+2026-07-14 07:08:26.982 | INFO     | myoconverter.xml.converter:_set_keyframe:176 - Setting the default keyframe
+2026-07-14 07:08:26.983 | INFO     | myoconverter.xml.converter:convert:65 - Writing the converted model into C:\Users\youss\exosquelette\mujoco_models\arm26_scaled_cvt1.xml
+2026-07-14 07:08:26.984 | INFO     | myoconverter.xml.converter:convert:68 - All good, conversion procedure is finished
+2026-07-14 07:08:26.985 | INFO     | myoconverter.conversion_steps.O2MSteps:PipelineExecution:126 - Finished step 1 conversion - cvt1.
+2026-07-14 07:08:26.986 | INFO     | myoconverter.conversion_steps.O2MSteps:PipelineExecution:132 - Started step 1 validation - val1.
+2026-07-14 07:08:26.987 | INFO     | myoconverter.conversion_steps.O2MStep1:vlt1_forwardKinematicsValidation:123 - Extract marker names (as endpoints) from osim model
+2026-07-14 07:08:26.997 | INFO     | myoconverter.conversion_steps.O2MStep1:vlt1_forwardKinematicsValidation:145 - Get the endpoint locations by meshing the joint angles within the range limits
+2026-07-14 07:08:27.302 | INFO     | myoconverter.conversion_steps.O2MStep1:vlt1_forwardKinematicsValidation:152 - Check if the joint motion ranges are the same between Osim and Mjc models
+2026-07-14 07:08:27.304 | INFO     | myoconverter.conversion_steps.O2MStep1:vlt1_forwardKinematicsValidation:172 - Finished with joint operation range check. Saved Results
+2026-07-14 07:08:27.305 | INFO     | myoconverter.conversion_steps.O2MStep1:endPointsPlot:180 - Plot each endpoint's location errors in x, y, z.
+2026-07-14 07:08:27.306 | INFO     | myoconverter.conversion_steps.O2MStep1:endPointsPlot:192 - Endpoint : r_acromion
+2026-07-14 07:08:27.440 | INFO     | myoconverter.conversion_steps.O2MStep1:endPointsPlot:192 - Endpoint : r_humerus_epicondyle
+2026-07-14 07:08:27.549 | INFO     | myoconverter.conversion_steps.O2MStep1:endPointsPlot:192 - Endpoint : r_radius_styloid
+2026-07-14 07:08:27.650 | INFO     | myoconverter.conversion_steps.O2MStep1:endPointsPlot:256 - Generate overall error Bar plot
+2026-07-14 07:08:27.697 | INFO     | myoconverter.conversion_steps.O2MSteps:PipelineExecution:142 - Finished step 1 validation - val1.
+2026-07-14 07:08:27.697 | INFO     | myoconverter.conversion_steps.O2MSteps:PipelineExecution:171 - xxx_cvt2 model already exist, process from it
+2026-07-14 07:08:27.995 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:135 - Overwrite not required
+2026-07-14 07:08:27.995 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:136 - checking if the muscle data file exist
+2026-07-14 07:08:27.996 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:171 - Muscle: TRIlong data file exist, will reuse it in the optimization
+2026-07-14 07:08:27.997 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:171 - Muscle: TRIlat data file exist, will reuse it in the optimization
+2026-07-14 07:08:27.998 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:171 - Muscle: TRImed data file exist, will reuse it in the optimization
+2026-07-14 07:08:27.999 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:171 - Muscle: BIClong data file exist, will reuse it in the optimization
+2026-07-14 07:08:28.000 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:171 - Muscle: BICshort data file exist, will reuse it in the optimization
+2026-07-14 07:08:28.000 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:171 - Muscle: BRA data file exist, will reuse it in the optimization
+2026-07-14 07:08:28.001 | INFO     | myoconverter.conversion_steps.O2MStep2:__init__:173 - Finished cvt2 initialize
+2026-07-14 07:08:28.002 | INFO     | myoconverter.conversion_steps.O2MSteps:PipelineExecution:198 - Started step 2 conversion - cvt2.
+2026-07-14 07:08:28.002 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:191 - Running MA optimization with the given muscle list one by one
+2026-07-14 07:08:28.003 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:195 - Muscle : TRIlong 
+2026-07-14 07:08:28.006 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_shoulder_elev
+2026-07-14 07:08:28.008 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:227 -     Start MA optimization
+2026-07-14 07:08:28.008 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:231 -     No wrapping information extracted, skipped
+2026-07-14 07:08:28.009 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_elbow_flex
+2026-07-14 07:08:28.011 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:220 -     MA errors between Osim and Mjc models are smaller than throshold, optimization skipped
+2026-07-14 07:08:28.012 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:195 - Muscle : TRIlat 
+2026-07-14 07:08:28.014 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_elbow_flex
+2026-07-14 07:08:28.016 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:220 -     MA errors between Osim and Mjc models are smaller than throshold, optimization skipped
+2026-07-14 07:08:28.017 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:195 - Muscle : TRImed 
+2026-07-14 07:08:28.020 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_elbow_flex
+2026-07-14 07:08:28.022 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:220 -     MA errors between Osim and Mjc models are smaller than throshold, optimization skipped
+2026-07-14 07:08:28.023 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:195 - Muscle : BIClong 
+2026-07-14 07:08:28.026 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_shoulder_elev
+2026-07-14 07:08:28.028 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:227 -     Start MA optimization
+2026-07-14 07:08:28.029 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:231 -     No wrapping information extracted, skipped
+2026-07-14 07:08:28.030 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_elbow_flex
+2026-07-14 07:08:28.032 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:220 -     MA errors between Osim and Mjc models are smaller than throshold, optimization skipped
+2026-07-14 07:08:28.034 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:195 - Muscle : BICshort 
+2026-07-14 07:08:28.034 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_shoulder_elev
+2026-07-14 07:08:28.036 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:220 -     MA errors between Osim and Mjc models are smaller than throshold, optimization skipped
+2026-07-14 07:08:28.037 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_elbow_flex
+2026-07-14 07:08:28.039 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:220 -     MA errors between Osim and Mjc models are smaller than throshold, optimization skipped
+2026-07-14 07:08:28.040 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:195 - Muscle : BRA 
+2026-07-14 07:08:28.043 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:208 -     At joints: r_elbow_flex
+2026-07-14 07:08:28.045 | INFO     | myoconverter.conversion_steps.O2MStep2:optMomentArms:227 -     Start MA optimization

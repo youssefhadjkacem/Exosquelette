@@ -1,0 +1,6 @@
+[2026-07-01 11:05:26.399] [info] Updating Model file from 40000 to latest format...
+[2026-07-01 11:05:26.419] [info] Loaded model Right from file C:\Users\youss\exosquelette\test\MoBL-ARMS Upper Extremity Model\Benchmarking Simulations\4.1 Model with Millard-Schutte Matched Curves\MOBL_ARMS_module5_scaleIK.osim
+[2026-07-01 11:05:26.420] [warning] Body 'thorax' is massless but nonzero inertia provided.
+[2026-07-01 11:05:26.420] [warning]  Inertia reset to zero. Otherwise provide nonzero mass.
+[2026-07-01 11:05:26.431] [warning] Body 'thorax' is massless but nonzero inertia provided.
+[2026-07-01 11:05:26.431] [warning]  Inertia reset to zero. Otherwise provide nonzero mass.

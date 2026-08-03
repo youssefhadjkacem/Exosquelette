@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+myoconv_env_py38/
+venv/
+.env/
+
+# VS Code
+.vscode/
+
+# Data and model archives (optional)
+*.zip
+*.tar.gz
+*.h5
+
+# OS files
+Thumbs.db
+.DS_Store
