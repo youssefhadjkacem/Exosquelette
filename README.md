@@ -16,17 +16,15 @@ Utilise MuJoCo pour la simulation physique, OpenSim pour la biomécanique, et St
 │   ├── test_scale.py            # Calculer facteur d'échelle anatomique
 │   └── train_myoassist.py       # Entraîner agent PPO sur l'environnement
 ├── tests/                        # Tests et scripts de validation
-├── data/                         # Données (fichiers volumineux excluS)
+├── data/                         # Données et fichiers de motion capture
 │   ├── opensim/                 # Fichiers OpenSim et résultats associés
-│   ├── motion_data*.csv         # Données de motion capture
-│   └── videos/                  # ⚠️ Stocké externellement (voir section Fichiers volumineux)
+│   └── motion_data*.csv         # Données de motion capture
 ├── models/                       # Modèles de simulation et entraînement
 │   ├── mujoco/
 │   │   ├── v1/                  # Version 1 du modèle MuJoCo
 │   │   └── v2/                  # Version 2 du modèle MuJoCo
 │   └── myoassist/               # Modèles PPO entraînés
-├── resources/                    # Ressources externes (fichiers volumineux exclus)
-│   └── mobl_arms/               # ⚠️ Stocké externalement (voir section Fichiers volumineux)
+├── resources/                    # Ressources externes et modèles tiers
 ├── requirements.txt             # Dépendances Python (pip)
 ├── environment.yml              # Environnement Conda
 └── README.md                    # Ce fichier
@@ -59,15 +57,6 @@ conda activate myoconv_env
 - **PyOpenGL**, **VTK** : visualisation 3D
 
 Voir `requirements.txt` pour la liste complète.
-
-## Fichiers volumineux (stockés externalement)
-
-⚠️ Les fichiers suivants ne sont **pas** versionnés sur GitHub :
-
-- `data/videos/video1.mp4` (21.82 MB)
-- `resources/mobl_arms/MoBL-ARMS Upper Extremity Model/` (~90 MB)
-
-Pour utiliser le projet, téléchargez ces fichiers depuis [stockage externe] et placez-les aux emplacements ci-dessus.
 
 ## Utilisation
 
