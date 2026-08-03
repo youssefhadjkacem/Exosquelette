@@ -60,15 +60,6 @@ conda activate myoconv_env
 
 Voir `requirements.txt` pour la liste complète.
 
-## Fichiers volumineux (stockés externalement)
-
-⚠️ Les fichiers suivants ne sont **pas** versionnés sur GitHub :
-
-- `data/videos/video1.mp4` (21.82 MB)
-- `resources/mobl_arms/MoBL-ARMS Upper Extremity Model/` (~90 MB)
-
-Pour utiliser le projet, téléchargez ces fichiers depuis [stockage externe] et placez-les aux emplacements ci-dessus.
-
 ## Utilisation
 
 ### Exécuter les scripts
