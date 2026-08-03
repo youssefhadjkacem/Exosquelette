@@ -20,3 +20,9 @@ venv/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Large binary files
+data/videos/
+resources/mobl_arms/MoBL-ARMS Upper Extremity Model/
+*.mp4
+*.vtp
