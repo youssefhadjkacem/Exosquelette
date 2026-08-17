@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "scenario_id": "video1_v1",
+  "title": "Premiere analyse du geste filme dans video1.mp4",
+  "purpose": "Construire une reference reproductible avant OpenSim, la conception de l'exosquelette et le RL.",
+  "study": {
+    "task": "geste de repassage filme - a confirmer par l'operateur",
+    "dominant_side": "right",
+    "subject_id": "anonymous_video1",
+    "subject_anthropometry_status": "missing",
+    "external_loads_status": "missing"
+  },
+  "acquisition": {
+    "video": "data/videos/video1.mp4",
+    "expected_fps": 30.0,
+    "expected_frames": 2298,
+    "expected_duration_s": 76.6,
+    "camera_count": 1,
+    "metric_calibration_status": "missing"
+  },
+  "processing": {
+    "raw_csv": "data/scenarios/video1_v1/motion_raw.csv",
+    "smoothed_csv": "data/scenarios/video1_v1/motion_smoothed.csv",
+    "motion_report": "data/scenarios/video1_v1/motion_quality.json",
+    "scenario_report": "data/scenarios/video1_v1/scenario_report.json",
+    "cutoff_hz": 6.0,
+    "filter_order": 4,
+    "max_interpolation_gap_frames": 5,
+    "minimum_visibility": 0.5,
+    "required_markers": [
+      "r_shoulder",
+      "r_elbow",
+      "r_wrist"
+    ]
+  },
+  "quality_gates": {
+    "max_missing_rate": 0.02,
+    "max_segment_cv": 0.1,
+    "max_frame_gap": 0
+  },
+  "downstream": {
+    "calibration": "config/calibration.json",
+    "trc": "data/scenarios/video1_v1/motion.trc",
+    "opensim_model": "data/opensim/arm26_scaled.osim",
+    "opensim_results": "data/scenarios/video1_v1/opensim",
+    "mujoco_reference_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
+    "rl_policy": "blocked_until_motion_opensim_and_exoskeleton_gates_pass"
+  }
+}

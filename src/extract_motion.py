@@ -1,79 +1,120 @@
-import cv2
-import mediapipe as mp
-import csv
-from pathlib import Path
+"""Extract a timestamped, quality-aware MediaPipe pose stream from a video."""
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-mp_pose = mp.solutions.pose
-pose = mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5)
-mp_drawing = mp.solutions.drawing_utils
+from __future__ import annotations
 
-video_path = PROJECT_ROOT / 'data' / 'videos' / 'video1.mp4'
-cap = cv2.VideoCapture(str(video_path))
+import argparse
+import sys
 
-output_data = []
-frame_number = 0
+from pipeline_utils import resolve_project_path, write_csv_rows
 
-while cap.isOpened():
-    ret, frame = cap.read()
-    if not ret:
-        break
 
-    image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    results = pose.process(image_rgb)
+LANDMARKS = (
+    "r_shoulder", "r_elbow", "r_wrist",
+    "l_shoulder", "l_elbow", "l_wrist",
+    "r_hip", "l_hip",
+)
 
-    if results.pose_landmarks:
-        landmarks = results.pose_landmarks.landmark
-        
-        # Bras droit
-        r_shoulder = landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER]
-        r_elbow = landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW]
-        r_wrist = landmarks[mp_pose.PoseLandmark.RIGHT_WRIST]
-        
-        # Bras gauche
-        l_shoulder = landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER]
-        l_elbow = landmarks[mp_pose.PoseLandmark.LEFT_ELBOW]
-        l_wrist = landmarks[mp_pose.PoseLandmark.LEFT_WRIST]
-        
-        # Torse (pour référence/orientation)
-        r_hip = landmarks[mp_pose.PoseLandmark.RIGHT_HIP]
-        l_hip = landmarks[mp_pose.PoseLandmark.LEFT_HIP]
 
-        output_data.append([
-            frame_number,
-            r_shoulder.x, r_shoulder.y, r_shoulder.z,
-            r_elbow.x, r_elbow.y, r_elbow.z,
-            r_wrist.x, r_wrist.y, r_wrist.z,
-            l_shoulder.x, l_shoulder.y, l_shoulder.z,
-            l_elbow.x, l_elbow.y, l_elbow.z,
-            l_wrist.x, l_wrist.y, l_wrist.z,
-            r_hip.x, r_hip.y, r_hip.z,
-            l_hip.x, l_hip.y, l_hip.z,
-        ])
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--video", default="data/videos/video1.mp4")
+    parser.add_argument("--output", default="data/motion_data_v2.csv")
+    parser.add_argument("--show", action="store_true", help="Afficher la detection pendant l'extraction.")
+    parser.add_argument("--min-detection-confidence", type=float, default=0.5)
+    parser.add_argument("--min-tracking-confidence", type=float, default=0.5)
+    return parser
 
-        mp_drawing.draw_landmarks(frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
-    cv2.imshow('Motion Capture', frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        import cv2
+        import mediapipe as mp
+    except ImportError as exc:
+        print(
+            "Dependance absente. Activez .venv310 puis installez requirements-py310.txt.\n"
+            f"Detail: {exc}", file=sys.stderr,
+        )
+        return 2
 
-    frame_number += 1
+    video_path = resolve_project_path(args.video)
+    output_path = resolve_project_path(args.output)
+    capture = cv2.VideoCapture(str(video_path))
+    if not capture.isOpened():
+        print(f"Impossible d'ouvrir la video: {video_path}", file=sys.stderr)
+        return 2
 
-cap.release()
-cv2.destroyAllWindows()
+    fps = float(capture.get(cv2.CAP_PROP_FPS))
+    if not fps or fps <= 0:
+        capture.release()
+        print("FPS video invalide; impossible de construire la base temporelle.", file=sys.stderr)
+        return 2
 
-with open(PROJECT_ROOT / 'data' / 'motion_data_v2.csv', 'w', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerow(['frame',
-                      'r_shoulder_x', 'r_shoulder_y', 'r_shoulder_z',
-                      'r_elbow_x', 'r_elbow_y', 'r_elbow_z',
-                      'r_wrist_x', 'r_wrist_y', 'r_wrist_z',
-                      'l_shoulder_x', 'l_shoulder_y', 'l_shoulder_z',
-                      'l_elbow_x', 'l_elbow_y', 'l_elbow_z',
-                      'l_wrist_x', 'l_wrist_y', 'l_wrist_z',
-                      'r_hip_x', 'r_hip_y', 'r_hip_z',
-                      'l_hip_x', 'l_hip_y', 'l_hip_z'])
-    writer.writerows(output_data)
+    pose_module = mp.solutions.pose
+    landmark_ids = {
+        "r_shoulder": pose_module.PoseLandmark.RIGHT_SHOULDER,
+        "r_elbow": pose_module.PoseLandmark.RIGHT_ELBOW,
+        "r_wrist": pose_module.PoseLandmark.RIGHT_WRIST,
+        "l_shoulder": pose_module.PoseLandmark.LEFT_SHOULDER,
+        "l_elbow": pose_module.PoseLandmark.LEFT_ELBOW,
+        "l_wrist": pose_module.PoseLandmark.LEFT_WRIST,
+        "r_hip": pose_module.PoseLandmark.RIGHT_HIP,
+        "l_hip": pose_module.PoseLandmark.LEFT_HIP,
+    }
+    fields = ["frame", "time_s", "pose_detected"]
+    for marker in LANDMARKS:
+        fields.extend(f"{marker}_{name}" for name in ("x", "y", "z", "visibility", "presence"))
 
-print(f"Terminé ! {len(output_data)} frames analysées.")
-print("Fichier sauvegardé : motion_data_v2.csv")
+    rows: list[dict[str, object]] = []
+    detected = 0
+    frame_number = 0
+    drawing = mp.solutions.drawing_utils
+    try:
+        with pose_module.Pose(
+            min_detection_confidence=args.min_detection_confidence,
+            min_tracking_confidence=args.min_tracking_confidence,
+        ) as pose:
+            while True:
+                ok, frame = capture.read()
+                if not ok:
+                    break
+                result = pose.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                row: dict[str, object] = {
+                    "frame": frame_number,
+                    "time_s": frame_number / fps,
+                    "pose_detected": int(result.pose_landmarks is not None),
+                }
+                if result.pose_landmarks:
+                    detected += 1
+                    for marker, landmark_id in landmark_ids.items():
+                        point = result.pose_landmarks.landmark[landmark_id]
+                        row.update({
+                            f"{marker}_x": point.x,
+                            f"{marker}_y": point.y,
+                            f"{marker}_z": point.z,
+                            f"{marker}_visibility": point.visibility,
+                            f"{marker}_presence": getattr(point, "presence", ""),
+                        })
+                    if args.show:
+                        drawing.draw_landmarks(frame, result.pose_landmarks, pose_module.POSE_CONNECTIONS)
+                rows.append(row)
+                if args.show:
+                    cv2.imshow("Motion Capture", frame)
+                    if cv2.waitKey(1) & 0xFF == ord("q"):
+                        break
+                frame_number += 1
+    finally:
+        capture.release()
+        if args.show:
+            cv2.destroyAllWindows()
+
+    write_csv_rows(output_path, fields, rows)
+    coverage = detected / len(rows) if rows else 0.0
+    print(f"Video: {len(rows)} frames a {fps:.6g} fps")
+    print(f"Pose detectee: {detected}/{len(rows)} ({coverage:.1%})")
+    print(f"CSV canonique: {output_path}")
+    return 0 if rows else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

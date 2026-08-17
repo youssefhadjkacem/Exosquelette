@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "EXPLORATORY_ASSUMPTIONS_NOT_MANUFACTURER_DATA",
+  "configuration": "config/exoskeleton/hybrid_active_v1.json",
+  "source_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
+  "passive_model": "models/mujoco/exoskeleton/light_passive_v1.xml",
+  "hybrid_model": "models/mujoco/exoskeleton/hybrid_active_v1.xml",
+  "added_mass_kg": 1.3,
+  "passive_joints": [
+    "r_shoulder_elev",
+    "r_elbow_flex"
+  ],
+  "active_motors": [
+    "exo_shoulder_motor",
+    "exo_elbow_motor"
+  ],
+  "limitations": [
+    "ideal rigid alignment with human segments",
+    "exploratory spring and motor values",
+    "not a manufacturer-validated Light model"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "description": "EXEMPLE UNIQUEMENT. Copier vers calibration.json apres calibration metrique.",
+  "source_space": "mediapipe_world_or_triangulated_3d",
+  "analysis_valid": false,
+  "scale_mm_per_unit": 1000.0,
+  "transform_4x4": [
+    [1.0, 0.0, 0.0, 0.0],
+    [0.0, -1.0, 0.0, 0.0],
+    [0.0, 0.0, -1.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "calibration_method": "A REMPLIR: stereo, RGB-D ou objet metrique",
+  "subject_id": "anonymous",
+  "calibration_date": null
+}

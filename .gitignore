@@ -8,6 +8,8 @@ __pycache__/
 myoconv_env_py38/
 venv/
 .env/
+.venv310/
+.venv38/
 
 # VS Code
 .vscode/
@@ -26,3 +28,8 @@ data/videos/
 resources/mobl_arms/MoBL-ARMS Upper Extremity Model/
 *.mp4
 *.vtp
+
+# Local calibration and generated validation results
+config/calibration.json
+data/results/
+data/scenarios/

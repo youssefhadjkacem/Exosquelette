@@ -1,51 +1,92 @@
-import csv
-import cv2
-from pathlib import Path
+"""Convert calibrated motion CSV data to OpenSim TRC without changing time."""
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-video_path = PROJECT_ROOT / 'data' / 'videos' / 'video1.mp4'
-cap = cv2.VideoCapture(str(video_path))
-fps = cap.get(cv2.CAP_PROP_FPS)
-cap.release()
+from __future__ import annotations
 
-print(f"Framerate détecté : {fps} fps")
+import argparse
+import math
+import statistics
+import sys
 
-with open(PROJECT_ROOT / 'data' / 'motion_data_smoothed.csv', 'r') as f:
-    reader = csv.DictReader(f)
-    rows = list(reader)
+import numpy as np
 
-num_frames = len(rows)
+from pipeline_utils import load_json, parse_float, read_csv_rows, resolve_project_path
 
-# Échelle : on veut que la distance épaule-coude soit environ 0.3m (30cm)
-# MediaPipe donne des valeurs normalisées 0-1, donc on teste avec 1000mm
-scale = 1000
-output_path = PROJECT_ROOT / 'data' / 'motion_data.trc'
-with open(output_path, 'w') as f:
-    f.write("PathFileType\t4\t(X/Y/Z)\tmotion_data.trc\n")
-    f.write("DataRate\tCameraRate\tNumFrames\tNumMarkers\tUnits\tOrigDataRate\tOrigDataStartFrame\tOrigNumFrames\n")
-    f.write(f"{fps}\t{fps}\t{num_frames}\t3\tmm\t{fps}\t1\t{num_frames}\n")
-    f.write("Frame#\tTime\tr_acromion\t\t\tr_humerus_epicondyle\t\t\tr_radius_styloid\t\t\n")
-    f.write("\t\tX1\tY1\tZ1\tX2\tY2\tZ2\tX3\tY3\tZ3\n\n")
 
-    for i, row in enumerate(rows):
-        time = i / fps
-        
-        # X reste pareil (gauche-droite)
-        sx = float(row['shoulder_x']) * scale
-        ex = float(row['elbow_x']) * scale
-        wx = float(row['wrist_x']) * scale
+MARKER_MAP = {
+    "right": (("r_shoulder", "r_acromion"), ("r_elbow", "r_humerus_epicondyle"), ("r_wrist", "r_radius_styloid")),
+    "left": (("l_shoulder", "l_acromion"), ("l_elbow", "l_humerus_epicondyle"), ("l_wrist", "l_radius_styloid")),
+    "legacy-right": (("shoulder", "r_acromion"), ("elbow", "r_humerus_epicondyle"), ("wrist", "r_radius_styloid")),
+}
 
-        # Y est INVERSÉ (MediaPipe: bas=positif, OpenSim: haut=positif)
-        sy = (1 - float(row['shoulder_y'])) * scale
-        ey = (1 - float(row['elbow_y'])) * scale
-        wy = (1 - float(row['wrist_y'])) * scale
 
-        # Z (profondeur) - on réduit son influence car peu fiable en mono-caméra
-        sz = float(row['shoulder_z']) * scale * 0.3
-        ez = float(row['elbow_z']) * scale * 0.3
-        wz = float(row['wrist_z']) * scale * 0.3
+def transform_point(row: dict[str, str], source: str, matrix: np.ndarray, scale: float) -> list[float]:
+    point = np.array([parse_float(row.get(f"{source}_x")), parse_float(row.get(f"{source}_y")), parse_float(row.get(f"{source}_z")), 1.0])
+    if not np.isfinite(point).all():
+        return [math.nan, math.nan, math.nan]
+    return ((matrix @ point)[:3] * scale).tolist()
 
-        f.write(f"{i+1}\t{time:.4f}\t{sx:.4f}\t{sy:.4f}\t{sz:.4f}\t{ex:.4f}\t{ey:.4f}\t{ez:.4f}\t{wx:.4f}\t{wy:.4f}\t{wz:.4f}\n")
 
-print(f"Fichier TRC créé : motion_data.trc")
-print(f"Nombre de frames : {num_frames}")
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", default="data/motion_data_smoothed.csv")
+    parser.add_argument("--output", default="data/motion_data.trc")
+    parser.add_argument("--calibration", default="config/calibration.json")
+    parser.add_argument("--side", choices=tuple(MARKER_MAP), default="right")
+    parser.add_argument("--allow-unvalidated-calibration", action="store_true")
+    parser.add_argument("--allow-missing", action="store_true")
+    args = parser.parse_args(argv)
+    input_path, output_path = resolve_project_path(args.input), resolve_project_path(args.output)
+    try:
+        calibration = load_json(resolve_project_path(args.calibration))
+        fieldnames, rows = read_csv_rows(input_path)
+    except (OSError, ValueError) as exc:
+        print(f"Entree invalide: {exc}", file=sys.stderr)
+        return 2
+    if not calibration.get("analysis_valid", False) and not args.allow_unvalidated_calibration:
+        print("Calibration non validee. --allow-unvalidated-calibration est reserve a la visualisation.", file=sys.stderr)
+        return 1
+    scale = calibration.get("scale_mm_per_unit")
+    matrix = np.asarray(calibration.get("transform_4x4"), dtype=float)
+    if not isinstance(scale, (int, float)) or scale <= 0 or matrix.shape != (4, 4):
+        print("La calibration doit definir scale_mm_per_unit>0 et transform_4x4 (4x4).", file=sys.stderr)
+        return 2
+    mapping = MARKER_MAP[args.side]
+    required = [f"{source}_{axis}" for source, _ in mapping for axis in ("x", "y", "z")]
+    missing_columns = [column for column in required if column not in fieldnames]
+    if missing_columns:
+        print(f"Colonnes absentes: {', '.join(missing_columns)}", file=sys.stderr)
+        return 2
+    times = [parse_float(row.get("time_s")) for row in rows]
+    if not all(math.isfinite(value) for value in times):
+        print("time_s est obligatoire et fini pour chaque frame.", file=sys.stderr)
+        return 2
+    deltas = [b - a for a, b in zip(times, times[1:])]
+    if not deltas or any(delta <= 0 for delta in deltas):
+        print("time_s doit etre strictement croissant.", file=sys.stderr)
+        return 2
+    fps = 1.0 / statistics.median(deltas)
+    transformed = [[transform_point(row, source, matrix, float(scale)) for source, _ in mapping] for row in rows]
+    missing_count = sum(not all(math.isfinite(v) for v in point) for frame in transformed for point in frame)
+    if missing_count and not args.allow_missing:
+        print(f"Conversion bloquee: {missing_count} positions manquantes.", file=sys.stderr)
+        return 1
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8", newline="\n") as stream:
+        stream.write(f"PathFileType\t4\t(X/Y/Z)\t{output_path.name}\n")
+        stream.write("DataRate\tCameraRate\tNumFrames\tNumMarkers\tUnits\tOrigDataRate\tOrigDataStartFrame\tOrigNumFrames\n")
+        stream.write(f"{fps:.8g}\t{fps:.8g}\t{len(rows)}\t{len(mapping)}\tmm\t{fps:.8g}\t1\t{len(rows)}\n")
+        stream.write("Frame#\tTime\t" + "\t\t\t".join(target for _, target in mapping) + "\t\t\n")
+        coordinates = [value for index in range(1, len(mapping) + 1) for value in (f"X{index}", f"Y{index}", f"Z{index}")]
+        stream.write("\t\t" + "\t".join(coordinates) + "\n\n")
+        for row, time_s, points in zip(rows, times, transformed):
+            frame_number = int(parse_float(row.get("frame"))) + 1
+            values = ["nan" if not math.isfinite(value) else f"{value:.6f}" for point in points for value in point]
+            stream.write(f"{frame_number}\t{time_s:.8f}\t" + "\t".join(values) + "\n")
+    print(f"TRC: {output_path}")
+    print(f"Frames={len(rows)}, marqueurs={len(mapping)}, fps={fps:.6g}, manquants={missing_count}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

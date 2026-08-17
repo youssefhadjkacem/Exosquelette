@@ -1,0 +1,12 @@
+# Capture, traitement, MuJoCo, MyoSuite et RL (Python 3.10, Windows 11)
+numpy==1.26.4
+scipy==1.11.4
+pandas==2.2.3
+opencv-contrib-python==4.10.0.84
+mediapipe==0.10.14
+mujoco==3.6.0
+gymnasium==0.29.1
+stable-baselines3==2.3.2
+myosuite==2.12.2
+tensorboard==2.18.0
+matplotlib==3.9.2

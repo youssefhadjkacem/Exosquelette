@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "model_id": "light_passive_v1",
+  "selection_status": "PROPOSED_FROM_BENCHMARK",
+  "model_scope": "conceptual_light_inspired_model_not_a_manufacturer_replica",
+  "source_document": "benchmark_desmodeles_exosqulettes.pdf",
+  "architecture": {
+    "type": "passive",
+    "target_task": "repassage avec les bras devant soi",
+    "human_side": "to_be_confirmed",
+    "assisted_coordinates": [
+      "r_shoulder_elev",
+      "r_elbow_flex"
+    ],
+    "energy_source": "elastic_elements",
+    "rl_controlled": false
+  },
+  "benchmark_claims_not_independently_verified": {
+    "total_mass_kg": 1.3,
+    "vertical_range_deg": [
+      0.0,
+      135.0
+    ],
+    "horizontal_range_deg": 180.0,
+    "assisted_regions": [
+      "shoulders",
+      "elbows"
+    ]
+  },
+  "parameters_required_before_quantitative_simulation": {
+    "shoulder_spring_stiffness_nm_per_rad": null,
+    "shoulder_preload_rad": null,
+    "shoulder_damping_nms_per_rad": null,
+    "elbow_spring_stiffness_nm_per_rad": null,
+    "elbow_preload_rad": null,
+    "elbow_damping_nms_per_rad": null,
+    "segment_masses_kg": null,
+    "centres_of_mass_m": null,
+    "attachment_points_m": null,
+    "interface_stiffness_n_per_m": null,
+    "maximum_interface_force_n": null
+  },
+  "simulation_policy": {
+    "initial_mode": "parameter_sweep_and_optimization",
+    "baseline_conditions": [
+      "human_without_exoskeleton",
+      "passive_shoulder_only",
+      "passive_elbow_only",
+      "passive_shoulder_and_elbow"
+    ],
+    "primary_metrics": [
+      "muscle_activation",
+      "shoulder_moment",
+      "elbow_moment",
+      "interface_force",
+      "range_of_motion",
+      "added_mass_penalty"
+    ],
+    "rl_allowed": false,
+    "rl_reason": "A passive device has no motor command for an RL policy. Optimize its mechanical parameters instead."
+  }
+}

@@ -1,0 +1,8 @@
+name: exosquelette-py38
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+      - -r requirements-py38-myoconverter.txt
