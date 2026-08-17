@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "controller_id": "classical_assistance_v1",
+  "status": "EXPLORATORY_PRESCRIBED_KINEMATICS",
+  "target_motion": "data/scenarios/video1_v2/target_arm26_exploratory.mot",
+  "models": {
+    "unassisted": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
+    "passive": "models/mujoco/exoskeleton/light_passive_v1.xml",
+    "hybrid": "models/mujoco/exoskeleton/hybrid_active_v1.xml"
+  },
+  "assistance_fraction": {
+    "r_shoulder_elev": 0.35,
+    "r_elbow_flex": 0.35
+  },
+  "motor_by_joint": {
+    "r_shoulder_elev": "exo_shoulder_motor",
+    "r_elbow_flex": "exo_elbow_motor"
+  },
+  "output_report": "data/scenarios/video1_v2/classical_assistance_report.json",
+  "output_timeseries": "data/scenarios/video1_v2/classical_assistance_timeseries.csv"
+}

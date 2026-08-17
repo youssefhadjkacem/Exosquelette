@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "controller_id": "closed_loop_computed_torque_pd_v1",
+  "status": "EXPLORATORY_DYNAMIC_TRACKING",
+  "target_motion": "data/scenarios/video1_v2/target_arm26_exploratory.mot",
+  "models": {
+    "unassisted": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
+    "passive": "models/mujoco/exoskeleton/light_passive_optimized_v2.xml",
+    "hybrid": "models/mujoco/exoskeleton/hybrid_optimized_v2.xml"
+  },
+  "tracking_gains": {
+    "r_shoulder_elev": {"kp": 100.0, "kd": 16.0},
+    "r_elbow_flex": {"kp": 40.0, "kd": 6.0}
+  },
+  "human_torque_limits_nm": {
+    "r_shoulder_elev": [-30.0, 30.0],
+    "r_elbow_flex": [-15.0, 15.0]
+  },
+  "hybrid_assistance_fraction": {
+    "r_shoulder_elev": 0.35,
+    "r_elbow_flex": 0.35
+  },
+  "motor_by_joint": {
+    "r_shoulder_elev": "exo_shoulder_motor",
+    "r_elbow_flex": "exo_elbow_motor"
+  },
+  "simulation": {
+    "disable_all_contacts": true,
+    "disable_muscle_actuators": true,
+    "maximum_tracking_rmse_deg": 5.0,
+    "maximum_human_saturation_rate": 0.01
+  },
+  "output_report": "data/scenarios/video1_v2/closed_loop_report.json",
+  "output_timeseries": "data/scenarios/video1_v2/closed_loop_timeseries.csv"
+}

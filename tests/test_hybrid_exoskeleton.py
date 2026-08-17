@@ -9,6 +9,7 @@ import mujoco
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = ROOT / "models" / "mujoco" / "exoskeleton" / "hybrid_active_v1.xml"
+OPTIMIZED_MODEL = ROOT / "models" / "mujoco" / "exoskeleton" / "hybrid_optimized_v2.xml"
 CONFIG = ROOT / "config" / "exoskeleton" / "hybrid_active_v1.json"
 
 
@@ -42,6 +43,13 @@ class HybridExoskeletonTests(unittest.TestCase):
         for _ in range(20):
             mujoco.mj_step(self.model, data)
         self.assertGreater(data.time, 0.0)
+
+    def test_optimized_model_loads_with_expected_springs(self):
+        model = mujoco.MjModel.from_xml_path(str(OPTIMIZED_MODEL))
+        shoulder = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "r_shoulder_elev")
+        elbow = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "r_elbow_flex")
+        self.assertAlmostEqual(model.jnt_stiffness[shoulder], 2.25)
+        self.assertAlmostEqual(model.jnt_stiffness[elbow], 1.75)
 
 
 if __name__ == "__main__":

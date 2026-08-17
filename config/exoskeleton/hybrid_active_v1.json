@@ -2,6 +2,8 @@
   "schema_version": 1,
   "model_id": "hybrid_active_v1",
   "status": "EXPLORATORY_ASSUMPTIONS_NOT_MANUFACTURER_DATA",
+  "task_arm": "right",
+  "task_arm_selection": "arm_holding_the_iron_in_video1_and_test1",
   "source_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
   "outputs": {
     "passive": "models/mujoco/exoskeleton/light_passive_v1.xml",

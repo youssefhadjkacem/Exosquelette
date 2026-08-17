@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "status": "EXPLORATORY_ASSUMPTIONS_NOT_MANUFACTURER_DATA",
+  "status": "EXPLORATORY_OPTIMIZED_ON_VIDEO1_V2",
   "task_arm": "right",
-  "task_arm_selection": "arm_holding_the_iron_in_video1_and_test1",
-  "configuration": "config/exoskeleton/hybrid_active_v1.json",
+  "task_arm_selection": "arm_holding_the_iron_in_video1",
+  "configuration": "config/exoskeleton/hybrid_optimized_v2.json",
   "source_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
-  "passive_model": "models/mujoco/exoskeleton/light_passive_v1.xml",
-  "hybrid_model": "models/mujoco/exoskeleton/hybrid_active_v1.xml",
+  "passive_model": "models/mujoco/exoskeleton/light_passive_optimized_v2.xml",
+  "hybrid_model": "models/mujoco/exoskeleton/hybrid_optimized_v2.xml",
   "added_mass_kg": 1.3,
   "passive_joints": [
     "r_shoulder_elev",

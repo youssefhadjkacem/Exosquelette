@@ -54,7 +54,8 @@ def build(config: dict, active: bool, output_path: Path) -> ET.ElementTree:
     parser = ET.XMLParser(target=ET.TreeBuilder(insert_comments=True))
     tree = ET.parse(source, parser=parser)
     root = tree.getroot()
-    root.set("model", config["model_id"] if active else "light_passive_v1")
+    passive_model_id = config.get("passive_model_id", Path(config["outputs"]["passive"]).stem)
+    root.set("model", config["model_id"] if active else passive_model_id)
     compiler = root.find("compiler")
     if compiler is None:
         compiler = ET.SubElement(root, "compiler")
@@ -107,6 +108,8 @@ def main(argv: list[str] | None = None) -> int:
     metadata = {
         "schema_version": 1,
         "status": config["status"],
+        "task_arm": config["task_arm"],
+        "task_arm_selection": config["task_arm_selection"],
         "configuration": str(Path(args.config).as_posix()),
         "source_model": str(Path(config["source_model"]).as_posix()),
         "passive_model": str(Path(config["outputs"]["passive"]).as_posix()),

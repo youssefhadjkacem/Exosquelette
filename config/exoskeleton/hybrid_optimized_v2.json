@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "model_id": "hybrid_optimized_v2",
+  "passive_model_id": "light_passive_optimized_v2",
+  "status": "EXPLORATORY_OPTIMIZED_ON_VIDEO1_V2",
+  "task_arm": "right",
+  "task_arm_selection": "arm_holding_the_iron_in_video1",
+  "source_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
+  "outputs": {
+    "passive": "models/mujoco/exoskeleton/light_passive_optimized_v2.xml",
+    "hybrid": "models/mujoco/exoskeleton/hybrid_optimized_v2.xml",
+    "metadata": "models/mujoco/exoskeleton/hybrid_optimized_v2.metadata.json"
+  },
+  "total_added_mass_kg": 1.3,
+  "components": {
+    "harness": {
+      "parent_body": "base", "mass_kg": 0.55,
+      "diaginertia_kg_m2": [0.004, 0.004, 0.004],
+      "geom_fromto_m": [-0.05, -0.02, 0.12, 0.05, -0.02, 0.12], "geom_radius_m": 0.018
+    },
+    "upper_arm_rail": {
+      "parent_body": "r_humerus", "mass_kg": 0.4,
+      "diaginertia_kg_m2": [0.0032, 0.0004, 0.0032],
+      "geom_fromto_m": [0.04, -0.02, 0.03, 0.04, -0.25, 0.03], "geom_radius_m": 0.012
+    },
+    "forearm_rail": {
+      "parent_body": "r_ulna_radius_hand", "mass_kg": 0.35,
+      "diaginertia_kg_m2": [0.0025, 0.0003, 0.0025],
+      "geom_fromto_m": [0.035, -0.02, 0.025, 0.035, -0.24, 0.025], "geom_radius_m": 0.011
+    }
+  },
+  "joints": {
+    "r_shoulder_elev": {
+      "spring_stiffness_nm_per_rad": 2.25,
+      "spring_reference_rad": 1.45,
+      "added_damping_nms_per_rad": 0.0,
+      "motor_name": "exo_shoulder_motor", "motor_torque_range_nm": [-5.0, 5.0]
+    },
+    "r_elbow_flex": {
+      "spring_stiffness_nm_per_rad": 1.75,
+      "spring_reference_rad": 2.05,
+      "added_damping_nms_per_rad": 0.0,
+      "motor_name": "exo_elbow_motor", "motor_torque_range_nm": [-3.0, 3.0]
+    }
+  },
+  "visual": {"rgba": [0.1, 0.65, 0.3, 0.75], "contact_enabled": false}
+}

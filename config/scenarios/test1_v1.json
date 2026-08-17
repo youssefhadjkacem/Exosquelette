@@ -4,8 +4,10 @@
   "title": "Analyse comparative du geste filme dans test1.mp4",
   "purpose": "Comparer test1.mp4 a video1.mp4 avec un traitement et des seuils identiques.",
   "study": {
-    "task": "geste filme - a confirmer par l'operateur",
+    "task": "geste de repassage filme",
     "dominant_side": "unknown",
+    "task_arm": "right",
+    "task_arm_selection": "visual_confirmation_of_the_hand_holding_the_iron",
     "subject_id": "anonymous_test1",
     "subject_anthropometry_status": "missing",
     "external_loads_status": "missing"

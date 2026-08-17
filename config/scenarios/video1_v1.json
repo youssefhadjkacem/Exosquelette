@@ -4,8 +4,10 @@
   "title": "Premiere analyse du geste filme dans video1.mp4",
   "purpose": "Construire une reference reproductible avant OpenSim, la conception de l'exosquelette et le RL.",
   "study": {
-    "task": "geste de repassage filme - a confirmer par l'operateur",
+    "task": "geste de repassage filme",
     "dominant_side": "right",
+    "task_arm": "right",
+    "task_arm_selection": "visual_confirmation_of_the_hand_holding_the_iron",
     "subject_id": "anonymous_video1",
     "subject_anthropometry_status": "missing",
     "external_loads_status": "missing"

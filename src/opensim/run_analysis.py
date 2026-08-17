@@ -28,8 +28,13 @@ def require_quality_gate(path: Path, allow_failed: bool) -> dict:
     with path.open("r", encoding="utf-8") as stream:
         report = json.load(stream)
     if report.get("status") != "PASS" and not allow_failed:
-        failures = "\n".join(f"- {item}" for item in report.get("failures", []))
-        raise RuntimeError(f"Qualite mouvement insuffisante:\n{failures}")
+        reasons = report.get("failures") or report.get("limitations") or [
+            f"statut recu: {report.get('status', 'UNKNOWN')}"
+        ]
+        failures = "\n".join(f"- {item}" for item in reasons)
+        raise RuntimeError(
+            f"Qualite mouvement insuffisante (statut {report.get('status', 'UNKNOWN')}):\n{failures}"
+        )
     return report
 
 

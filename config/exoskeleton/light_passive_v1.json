@@ -7,7 +7,8 @@
   "architecture": {
     "type": "passive",
     "target_task": "repassage avec les bras devant soi",
-    "human_side": "to_be_confirmed",
+    "human_side": "right",
+    "side_selection": "arm_holding_the_iron_in_video1_and_test1",
     "assisted_coordinates": [
       "r_shoulder_elev",
       "r_elbow_flex"

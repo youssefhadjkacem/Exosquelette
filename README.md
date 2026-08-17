@@ -43,6 +43,16 @@ Voir [docs/windows_setup.md](docs/windows_setup.md) pour les détails et le dép
 
 ## Parcours minimal
 
+### Parcours expérimental V2 en une commande
+
+Pour reconstruire le mouvement actuel, optimiser l’exosquelette, exécuter les contrôleurs et lancer les tests :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_experimental_v2.ps1
+```
+
+Voir [le parcours V2 simplifié](docs/experimental_v2_overview.md). Toutes ses conclusions restent exploratoires.
+
 Pour reproduire directement la première analyse complète de `video1.mp4`, voir [le scénario V1](docs/scenarios/video1_v1.md) et lancer :
 
 ```powershell
@@ -51,6 +61,38 @@ Pour reproduire directement la première analyse complète de `video1.mp4`, voir
 ```
 
 Ce scénario s'arrête volontairement avant OpenSim si la qualité du mouvement obtient `FAIL`.
+
+La reconstruction monoculaire contrainte V2 du bras tenant le fer est disponible en mode exploratoire :
+
+```powershell
+.\.venv310\Scripts\python.exe .\scripts\run_motion_v2.py
+```
+
+Voir [le scénario mouvement V2](docs/scenarios/video1_v2.md). Son statut maximal est `EXPLORATORY_PASS` et ne débloque pas OpenSim quantitatif.
+
+La baseline de commande classique peut ensuite être évaluée :
+
+```powershell
+.\.venv310\Scripts\python.exe .\src\mujoco\evaluate_classical_assistance.py
+```
+
+Voir [le contrôleur classique V1](docs/classical_controller_v1.md).
+
+Les ressorts peuvent ensuite être optimisés et la variante hybride recalculée :
+
+```powershell
+.\.venv310\Scripts\python.exe .\src\mujoco\optimize_passive_assistance.py
+.\.venv310\Scripts\python.exe .\src\mujoco\build_hybrid_exoskeleton.py `
+  --config config\exoskeleton\hybrid_optimized_v2.json
+.\.venv310\Scripts\python.exe .\src\mujoco\evaluate_classical_assistance.py `
+  --config config\controllers\classical_assistance_optimized_v2.json
+```
+
+La baseline dynamique en boucle fermée est exécutée avec :
+
+```powershell
+.\.venv310\Scripts\python.exe .\src\mujoco\run_closed_loop_controller.py
+```
 
 ### 1. Extraction
 
@@ -145,9 +187,14 @@ Si le dispositif choisi est passif, ne pas utiliser PPO. Optimiser ses ressorts,
 - [Plan d’exécution](docs/roadmap.md)
 - [État de référence et résultats historiques](docs/current_status.md)
 - [Scénario reproductible `video1_v1`](docs/scenarios/video1_v1.md)
+- [Reconstruction contrainte `video1_v2`](docs/scenarios/video1_v2.md)
 - [Comparaison de `video1` et `test1`](docs/scenarios/video1_vs_test1.md)
 - [Sélection du modèle d’exosquelette](docs/exoskeleton_model_selection.md)
 - [Prototype MuJoCo hybride V1](docs/hybrid_exoskeleton_v1.md)
+- [Contrôleur classique d’assistance V1](docs/classical_controller_v1.md)
+- [Optimisation des ressorts passifs](docs/passive_optimization_v1.md)
+- [Contrôleur dynamique en boucle fermée](docs/closed_loop_controller_v1.md)
+- [Parcours expérimental V2 simplifié](docs/experimental_v2_overview.md)
 
 ## État actuel
 

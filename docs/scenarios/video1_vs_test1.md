@@ -44,9 +44,10 @@ Pour le bras gauche, `test1` est nettement préférable et se rapproche davantag
 
 ## Verdict
 
-- Si le projet cible le **bras droit**, conserver `video1` comme meilleure référence actuelle.
-- Si le projet cible le **bras gauche**, `test1` est la meilleure vidéo actuelle.
-- Si `test1` était censée montrer le bras droit, vérifier le côté anatomique attendu et l’éventuel effet miroir de la vidéo.
+- La vérification visuelle confirme que le fer est tenu par le **bras droit anatomique** dans les deux vidéos.
+- Le bras fonctionnel retenu pour l’étude est donc le bras droit, indépendamment de la dominance déclarée du sujet.
+- Pour ce bras, conserver `video1` comme meilleure référence actuelle.
+- `test1` reste utile pour la comparaison, mais son coude et son poignet droits sont trop souvent occultés.
 - Aucune des deux vidéos ne permet encore une analyse OpenSim quantitative validée.
 
 La différence entre les côtés montre que l’orientation de la caméra et les occultations influencent fortement les résultats. Pour la prochaine capture, placer la caméra du côté du bras étudié, garder épaule, coude et poignet visibles, et ajouter une deuxième caméra ou un capteur RGB-D.

@@ -1,5 +1,17 @@
 # Contrat des données de mouvement
 
+## Données contraintes V2
+
+Le fichier `motion_constrained.csv` conserve `frame` et `time_s`, exprime les coordonnées en mètres et ajoute :
+
+- `source_valid` : directions sources disponibles ou interpolables ;
+- `analysis_valid=0` : interdit de présenter la reconstruction comme une mesure 3D validée ;
+- `reconstruction_method` : méthode planaire utilisée ;
+- `shoulder_planar_angle_deg` ;
+- `elbow_interior_angle_deg`.
+
+Un rapport `EXPLORATORY_PASS` ne doit jamais être converti implicitement en `PASS`.
+
 ## CSV canonique
 
 Une ligne correspond à une frame vidéo, même si aucune pose n’est détectée.

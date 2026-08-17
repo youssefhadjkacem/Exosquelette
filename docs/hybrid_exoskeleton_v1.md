@@ -9,6 +9,8 @@ Deux modèles sont générés à partir de `arm26_scaled_cvt3_mujoco36.xml` :
 
 Cette séparation permet une comparaison correcte entre assistance passive et assistance active. Le prototype est inspiré de l’architecture fonctionnelle du Light, mais ne reproduit pas un produit commercial.
 
+Le modèle assiste le bras droit, sélectionné parce qu’il tient le fer dans `video1` et `test1`. Ce choix fonctionnel est distinct de la dominance manuelle du sujet.
+
 ## Architecture implémentée
 
 Le prototype ajoute trois composants bleus, rigidement alignés avec le modèle humain :

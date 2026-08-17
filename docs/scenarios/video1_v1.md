@@ -4,7 +4,7 @@
 
 Cette première version transforme `data/videos/video1.mp4` en une expérience reproductible. Elle sert à vérifier la capture du mouvement avant toute interprétation biomécanique, simulation d’exosquelette ou utilisation du RL.
 
-Le geste est provisoirement identifié comme un geste de repassage du bras droit. Cette interprétation doit être confirmée par l’opérateur. La V1 ne prétend pas encore estimer correctement les efforts musculaires ni la fatigue.
+Le geste est identifié comme un geste de repassage. La vérification visuelle confirme que le fer est tenu par le bras droit anatomique, qui devient le bras fonctionnel étudié. La V1 ne prétend pas encore estimer correctement les efforts musculaires ni la fatigue.
 
 ## 2. Données d’entrée
 
