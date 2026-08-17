@@ -46,3 +46,9 @@ Un nouveau jeu de résultats devient la référence uniquement lorsqu’il poss�
 3. les setups et journaux OpenSim ;
 4. un rapport OpenSim `PASS` incluant la RMS marqueurs ;
 5. pour le RL, un modèle avec actionneurs d’exosquelette et limites actives.
+
+## Préparation hors caméra
+
+La branche de préparation V3 ajoute un protocole à deux caméras et un bac à sable RL indépendant des vidéos humaines. Le modèle simplifié possède deux moteurs humains idéaux et deux moteurs `exo_*` limités. Il sert uniquement à tester l'API Gymnasium, la récompense, PPO et les garde-fous.
+
+Son statut maximal est `SOFTWARE_EXPLORATION_ONLY`. Les réductions de couple obtenues dans ce bac à sable sont des tests de régression logicielle, pas des estimations d'efficacité ou de fatigue. Les critères de sortie ci-dessus restent inchangés.

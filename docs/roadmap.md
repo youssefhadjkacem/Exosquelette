@@ -11,13 +11,15 @@ Livrable : installation depuis une machine Windows propre.
 
 ## Lot 2 — mouvement métrique
 
-- définir le protocole caméra ;
+- utiliser le protocole V3 à deux caméras préparé dans `config/acquisition/` ;
 - mesurer le sujet ;
 - produire le CSV canonique ;
 - calibrer et trianguler ;
 - obtenir un rapport mouvement `PASS`.
 
 Livrable : TRC métrique avec chronologie complète.
+
+En attendant les caméras, `scripts/run_offline_preparation.ps1` valide le gabarit V3 et le bac à sable RL synthétique. Ce travail réduit le risque logiciel du lot 6, mais ne satisfait aucun critère biomécanique du lot 2.
 
 ## Lot 3 — biomécanique du bras dominant
 
@@ -49,6 +51,7 @@ Livrable : proposition mécanique et analyse de sensibilité.
 
 - ajouter les moteurs `exo_*` ;
 - valider contrôleur classique ;
+- remplacer la trajectoire synthétique et le contrôleur humain idéal du bac à sable ;
 - faire passer le readiness gate ;
 - entraîner PPO ;
 - comparer aux baselines et tester hors distribution.

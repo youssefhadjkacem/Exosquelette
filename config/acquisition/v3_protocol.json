@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "protocol_id": "ironing_multiview_v3",
+  "status": "PREPARED_AWAITING_CAPTURE",
+  "task": "repeated_ironing_with_right_arm_holding_the_iron",
+  "minimum_complete_cycles": 10,
+  "capture": {
+    "camera_count": 2,
+    "target_fps": 30.0,
+    "minimum_resolution": [1280, 720],
+    "constant_frame_rate_required": true,
+    "synchronization": "visible_clap_or_led_event_at_start_and_end",
+    "maximum_sync_error_ms": 16.7,
+    "metric_reference_required": true,
+    "checkerboard_calibration_required": true
+  },
+  "camera_layout": {
+    "camera_1": {
+      "role": "right_lateral_view",
+      "azimuth_deg": 90.0,
+      "azimuth_tolerance_deg": 15.0,
+      "height": "approximately_shoulder_height",
+      "required_visibility": ["right_shoulder", "right_elbow", "right_wrist", "right_hand", "iron"]
+    },
+    "camera_2": {
+      "role": "front_oblique_view",
+      "azimuth_deg": 35.0,
+      "azimuth_tolerance_deg": 15.0,
+      "height": "approximately_shoulder_height",
+      "required_visibility": ["right_shoulder", "right_elbow", "right_wrist", "right_hand", "iron"]
+    }
+  },
+  "required_measurements": {
+    "participant_stature_m": {"minimum": 1.2, "maximum": 2.2},
+    "participant_mass_kg": {"minimum": 35.0, "maximum": 180.0},
+    "right_upper_arm_length_m": {"minimum": 0.2, "maximum": 0.45},
+    "right_forearm_length_m": {"minimum": 0.18, "maximum": 0.4},
+    "iron_mass_kg": {"minimum": 0.3, "maximum": 4.0},
+    "table_height_m": {"minimum": 0.5, "maximum": 1.3}
+  },
+  "quality_gates": {
+    "minimum_pose_coverage": 0.98,
+    "maximum_camera_fps_difference": 0.1,
+    "maximum_duration_difference_s": 0.1,
+    "maximum_reprojection_error_px": 3.0,
+    "maximum_triangulation_gap_frames": 3
+  },
+  "scientific_policy": {
+    "rl_allowed_from_template": false,
+    "opensim_allowed_from_template": false,
+    "reason": "capture, calibration, anthropometry and external loads must be measured first"
+  }
+}

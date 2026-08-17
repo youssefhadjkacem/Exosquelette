@@ -61,6 +61,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_video_comparison_v2.ps1
 
 Voir [la comparaison V2 de `video1` et `test1`](docs/scenarios/video1_vs_test1_v2.md). Un scénario en échec peut être conservé dans le rapport, mais il reste bloqué pour les étapes biomécaniques et le RL.
 
+Pendant l'attente des nouvelles caméras, la préparation V3 et le bac à sable RL synthétique peuvent être exécutés sans utiliser `test1` comme vérité biomécanique :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_offline_preparation.ps1
+```
+
+Voir [la préparation hors caméra V3/RL](docs/offline_v3_rl_preparation.md). Les résultats RL de ce parcours sont strictement logiciels et devront être remplacés après l'acquisition V3.
+
 Pour reproduire directement la première analyse complète de `video1.mp4`, voir [le scénario V1](docs/scenarios/video1_v1.md) et lancer :
 
 ```powershell
@@ -204,6 +212,7 @@ Si le dispositif choisi est passif, ne pas utiliser PPO. Optimiser ses ressorts,
 - [Optimisation des ressorts passifs](docs/passive_optimization_v1.md)
 - [Contrôleur dynamique en boucle fermée](docs/closed_loop_controller_v1.md)
 - [Parcours expérimental V2 simplifié](docs/experimental_v2_overview.md)
+- [Préparation hors caméra : acquisition V3 et RL synthétique](docs/offline_v3_rl_preparation.md)
 
 ## État actuel
 
