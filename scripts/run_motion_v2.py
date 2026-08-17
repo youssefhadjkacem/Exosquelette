@@ -17,16 +17,23 @@ def resolve(value: str) -> Path:
     return path if path.is_absolute() else PROJECT_ROOT / path
 
 
-def run(command: list[str]) -> None:
+def run(command: list[str], allowed_returncodes: tuple[int, ...] = (0,)) -> None:
     print(" ".join(command))
     completed = subprocess.run(command, cwd=PROJECT_ROOT, check=False)
-    if completed.returncode != 0:
+    if completed.returncode not in allowed_returncodes:
         raise RuntimeError(f"Commande echouee avec le code {completed.returncode}")
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default="config/scenarios/video1_v2.json")
+    parser.add_argument(
+        "--report-on-fail", action="store_true",
+        help=(
+            "Conserver le rapport d'un scenario qui echoue et retourner succes sans "
+            "generer les cibles TRC/MOT. Utile pour une comparaison de robustesse."
+        ),
+    )
     args = parser.parse_args(argv)
     try:
         config_path = resolve(args.config)
@@ -34,9 +41,13 @@ def main(argv: list[str] | None = None) -> int:
         run([
             sys.executable, str(PROJECT_ROOT / "src" / "reconstruct_planar_arm.py"),
             "--config", str(config_path),
-        ])
+        ], allowed_returncodes=(0, 1) if args.report_on_fail else (0,))
         report = json.loads(resolve(config["output_report"]).read_text(encoding="utf-8"))
         if report.get("status") != "EXPLORATORY_PASS":
+            if args.report_on_fail:
+                print("Scenario conserve pour comparaison malgre l'echec des controles.")
+                print("TRC et cible MuJoCo non generes pour ce scenario.")
+                return 0
             raise RuntimeError("La reconstruction V2 n'a pas passe ses controles exploratoires.")
         run([
             sys.executable, str(PROJECT_ROOT / "src" / "convert_to_trc.py"),

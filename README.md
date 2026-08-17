@@ -53,6 +53,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_experimental_v2.ps1
 
 Voir [le parcours V2 simplifié](docs/experimental_v2_overview.md). Toutes ses conclusions restent exploratoires.
 
+Pour comparer automatiquement `video1` et `test1` avec les mêmes paramètres, générer les graphiques et produire le rapport technique :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_video_comparison_v2.ps1
+```
+
+Voir [la comparaison V2 de `video1` et `test1`](docs/scenarios/video1_vs_test1_v2.md). Un scénario en échec peut être conservé dans le rapport, mais il reste bloqué pour les étapes biomécaniques et le RL.
+
 Pour reproduire directement la première analyse complète de `video1.mp4`, voir [le scénario V1](docs/scenarios/video1_v1.md) et lancer :
 
 ```powershell
@@ -189,6 +197,7 @@ Si le dispositif choisi est passif, ne pas utiliser PPO. Optimiser ses ressorts,
 - [Scénario reproductible `video1_v1`](docs/scenarios/video1_v1.md)
 - [Reconstruction contrainte `video1_v2`](docs/scenarios/video1_v2.md)
 - [Comparaison de `video1` et `test1`](docs/scenarios/video1_vs_test1.md)
+- [Comparaison V2 reproductible de `video1` et `test1`](docs/scenarios/video1_vs_test1_v2.md)
 - [Sélection du modèle d’exosquelette](docs/exoskeleton_model_selection.md)
 - [Prototype MuJoCo hybride V1](docs/hybrid_exoskeleton_v1.md)
 - [Contrôleur classique d’assistance V1](docs/classical_controller_v1.md)

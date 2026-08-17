@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "scenario_id": "test1_v2",
+  "title": "Reconstruction planaire contrainte du bras droit dans test1",
+  "source_motion": "data/scenarios/test1_v1/motion_smoothed.csv",
+  "output_motion": "data/scenarios/test1_v2/motion_constrained.csv",
+  "output_report": "data/scenarios/test1_v2/motion_quality_v2.json",
+  "output_trc": "data/scenarios/test1_v2/motion_exploratory.trc",
+  "output_mot": "data/scenarios/test1_v2/target_arm26_exploratory.mot",
+  "output_mot_report": "data/scenarios/test1_v2/target_arm26_mapping.json",
+  "calibration": "config/calibration.planar_exploratory.json",
+  "task_arm": "right",
+  "task_arm_selection": "visual_confirmation_of_the_hand_holding_the_iron",
+  "activity_window": {
+    "start_frame": 0,
+    "end_frame": 803,
+    "selection_method": "full_video_for_camera_robustness_test",
+    "description": "video complete; aucune sous-fenetre choisie pour masquer les occultations"
+  },
+  "anthropometry": {
+    "source": "same_exploratory_assumption_as_video1_not_subject_measurement",
+    "analysis_valid": false,
+    "upper_arm_length_m": 0.3,
+    "forearm_length_m": 0.25,
+    "assumed_stature_m": 1.63,
+    "assumed_mass_kg": 60.0
+  },
+  "reconstruction": {
+    "method": "camera_plane_fixed_segment_lengths",
+    "horizontal_axis": "image_x_right",
+    "vertical_axis": "image_y_up",
+    "depth_m": 0.0,
+    "shoulder_origin_m": [0.0, 0.0, 0.0],
+    "angle_filter_cutoff_hz": 2.0,
+    "angle_filter_order": 4,
+    "max_unreliable_gap_frames": 10,
+    "min_projected_upper_arm_normalized": 0.05,
+    "min_projected_forearm_normalized": 0.025,
+    "elbow_angle_source": "filtered_mediapipe_3d_direction",
+    "elbow_plane_sign": "dominant_sign_over_activity_window"
+  },
+  "quality_gates": {
+    "max_missing_rate": 0.02,
+    "max_segment_cv": 0.1,
+    "max_frame_gap": 0
+  },
+  "kinematic_gates": {
+    "max_p95_angular_velocity_deg_s": 500.0,
+    "max_p95_angular_acceleration_deg_s2": 3000.0
+  },
+  "mujoco_mapping": {
+    "status": "BLOCKED_UNLESS_EXPLORATORY_PASS",
+    "model": "models/mujoco/exoskeleton/hybrid_active_v1.xml",
+    "shoulder": {
+      "source_column": "shoulder_planar_angle_deg",
+      "reference_axis_deg": -90.0,
+      "scale": -1.0,
+      "target_coordinate": "r_shoulder_elev"
+    },
+    "elbow": {
+      "source_column": "elbow_interior_angle_deg",
+      "offset_deg": 0.0,
+      "scale": 1.0,
+      "target_coordinate": "r_elbow_flex"
+    },
+    "joint_limit_policy": "clip_and_report"
+  },
+  "scientific_policy": {
+    "maximum_status": "EXPLORATORY_PASS",
+    "quantitative_opensim_allowed": false,
+    "reason": "single-camera planar reconstruction with assumed anthropometry"
+  }
+}

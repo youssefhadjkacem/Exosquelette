@@ -37,6 +37,10 @@ def main(argv: list[str] | None = None) -> int:
         "--skip-extraction", action="store_true",
         help="Reutiliser le CSV brut existant.",
     )
+    parser.add_argument(
+        "--report-on-fail", action="store_true",
+        help="Conserver un scenario en echec comme evidence comparative sans retourner une erreur.",
+    )
     args = parser.parse_args(argv)
 
     config_path = project_path(args.config)
@@ -113,7 +117,7 @@ def main(argv: list[str] | None = None) -> int:
     scenario_report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"\nRapport du scenario: {scenario_report_path}")
     print(f"Decision: {report['decision']['status']}")
-    return 0 if passed else 1
+    return 0 if passed or args.report_on_fail else 1
 
 
 if __name__ == "__main__":

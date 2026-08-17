@@ -32,6 +32,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_experimental_v2.ps1
 
 Le script s’arrête immédiatement si une étape ou un test échoue.
 
+La robustesse du mouvement face à une autre prise de vue se vérifie séparément :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\run_video_comparison_v2.ps1
+```
+
+Cette comparaison conserve les scénarios en échec comme preuves, sans les transmettre à OpenSim, MuJoCo ou au RL. Voir [le rapport V2 `video1` contre `test1`](scenarios/video1_vs_test1_v2.md).
+
 ## Résultats de référence actuels
 
 | Étape | Statut |
@@ -45,12 +53,14 @@ Le script s’arrête immédiatement si une étape ou un test échoue.
 | Contrôleur dynamique fermé | `EXPLORATORY_PASS` |
 | OpenSim quantitatif | bloqué |
 | RL scientifique | bloqué |
+| Robustesse caméra avec `test1` | `FAIL` — couverture du bras droit 19,2 % |
 
 ## Configurations principales
 
 | Fichier | Rôle |
 |---|---|
 | `config/scenarios/video1_v2.json` | mouvement, anthropométrie supposée et conversion articulaire |
+| `config/scenarios/test1_v2.json` | second scénario soumis aux mêmes paramètres et seuils |
 | `config/exoskeleton/hybrid_optimized_v2.json` | ressorts, masses et moteurs optimisés |
 | `config/controllers/passive_optimization_v1.json` | espace de recherche des ressorts |
 | `config/controllers/classical_assistance_optimized_v2.json` | comparaison en cinématique prescrite |
