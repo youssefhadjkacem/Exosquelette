@@ -79,6 +79,21 @@ La V2 peut servir à tester le suivi de trajectoire MuJoCo, développer le contr
 
 Elle ne peut pas encore servir à conclure sur les moments articulaires, les activations musculaires, la fatigue de l’opératrice ou l’efficacité industrielle de l’exosquelette.
 
+## Retargeting Blender (avatar MPFB2, bras droit)
+
+`src/blender/import_animation.py` importe `target_arm26_exploratory.mot` sur les os
+`upperarm01.R` (épaule) et `lowerarm01.R` (coude) du rig `Human.rig`, avec :
+
+- `r_shoulder_elev` → `rotation_euler[2]` (axe Z local), **signe inversé** ;
+- `r_elbow_flex` → `rotation_euler[0]` (axe X local), signe inchangé ;
+- remise à zéro de tout l'armature avant application (le reste du corps reste en pose neutre, sans donnée inventée).
+
+Ce mapping a été validé empiriquement (calcul direct des positions monde du poignet dans `femme.blend`, pas seulement une lecture visuelle) : l'axe Z est bien celui qui balaie le bras dans le plan vertical, et le signe inversé fait correctement monter le bras quand `r_shoulder_elev` augmente.
+
+**Limite constatée** : une comparaison image par image sur toute la séquence (8 instants répartis entre 0 et 36 s) contre `video1.mp4` montre que le rythme, l'amplitude et la direction du geste ne correspondent pas bien à la vidéo, malgré un mapping épaule/coude techniquement correct. Dans la vidéo, l'ouvrière est penchée en avant au niveau du buste et le fer reste bas, près de la planche, avec des allers-retours de faible amplitude. Dans le rendu, le buste reste rigide et vertical (aucune donnée de tronc dans arm26) et le bras seul doit couvrir toute l'amplitude du geste, ce qui produit de grands balayages qui ne ressemblent pas au mouvement réel.
+
+Cette limite vient du modèle arm26 lui-même (2 DOF, pas de tronc), pas du mapping épaule/coude. Elle sera levée par le protocole V3 (deux caméras) uniquement si le modèle biomécanique retenu à ce moment-là inclut un degré de liberté de tronc ; sinon elle persistera même avec des angles épaule/coude mieux mesurés.
+
 ## Passage à une version validée
 
 Il faudra remplacer les hypothèses par les mesures du sujet et obtenir une profondeur mesurée avec deux caméras calibrées ou une caméra RGB-D. Cette future acquisition pourra produire un véritable statut `PASS`.
