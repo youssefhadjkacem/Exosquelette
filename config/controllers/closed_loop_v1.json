@@ -2,7 +2,7 @@
   "schema_version": 1,
   "controller_id": "closed_loop_computed_torque_pd_v1",
   "status": "EXPLORATORY_DYNAMIC_TRACKING",
-  "target_motion": "data/scenarios/video1_v2/target_arm26_exploratory.mot",
+  "target_motion": "data/scenarios/pipeline_principal/target_arm26_exploratory.mot",
   "models": {
     "unassisted": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
     "passive": "models/mujoco/exoskeleton/light_passive_optimized_v2.xml",
@@ -30,6 +30,6 @@
     "maximum_tracking_rmse_deg": 5.0,
     "maximum_human_saturation_rate": 0.01
   },
-  "output_report": "data/scenarios/video1_v2/closed_loop_report.json",
-  "output_timeseries": "data/scenarios/video1_v2/closed_loop_timeseries.csv"
+  "output_report": "data/scenarios/pipeline_principal/closed_loop_report.json",
+  "output_timeseries": "data/scenarios/pipeline_principal/closed_loop_timeseries.csv"
 }

@@ -9,7 +9,7 @@ import bpy
 from mathutils import Vector
 
 
-OUTPUT = Path("C:/Users/youss/exosquelette/data/scenarios/video1_v2/avatar_metadata.json")
+OUTPUT = Path("C:/Users/youss/exosquelette/data/scenarios/pipeline_principal/avatar_metadata.json")
 RIG_NAME = "Human.rig"
 BODY_NAME = "Human"
 

@@ -63,4 +63,4 @@ La différence entre les côtés montre que l’orientation de la caméra et les
 .\.venv310\Scripts\python.exe .\scripts\compare_motion_reports.py
 ```
 
-Le rapport généré est `data/scenarios/video1_vs_test1/comparison.json`.
+Le rapport généré est `data/scenarios/essais/video1_vs_test1/comparison.json`.

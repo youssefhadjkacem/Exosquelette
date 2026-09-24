@@ -57,7 +57,7 @@ PASS : calibration métrique puis OpenSim
 FAIL : correction de la capture avant de continuer
 ```
 
-Les artefacts générés sont isolés dans `data/scenarios/video1_v1/`.
+Les artefacts générés sont isolés dans `data/scenarios/essais/video1_v1/`.
 
 ## 5. Résultat obtenu le 17 août 2026
 

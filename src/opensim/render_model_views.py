@@ -16,7 +16,7 @@ Must run under the Python 3.8 OpenSim environment (see docs/windows_setup.md):
 
     .venv38\\Scripts\\python.exe src/opensim/render_model_views.py --mode motion ^
         --model data/opensim/arm26_scaled.osim ^
-        --mot data/scenarios/video1_v2/target_arm26_exploratory.mot ^
+        --mot data/scenarios/pipeline_principal/target_arm26_exploratory.mot ^
         --output data/presentation_assets/opensim --start-time 10 --duration 6
 """
 

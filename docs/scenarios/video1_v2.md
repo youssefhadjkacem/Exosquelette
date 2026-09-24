@@ -38,10 +38,10 @@ Les longueurs et la stature sont des hypothèses anthropométriques, pas des mes
 
 Cette commande produit :
 
-- `data/scenarios/video1_v2/motion_constrained.csv` ;
-- `data/scenarios/video1_v2/motion_quality_v2.json` ;
-- `data/scenarios/video1_v2/motion_exploratory.trc`.
-- `data/scenarios/video1_v2/target_arm26_exploratory.mot`.
+- `data/scenarios/pipeline_principal/motion_constrained.csv` ;
+- `data/scenarios/pipeline_principal/motion_quality_v2.json` ;
+- `data/scenarios/pipeline_principal/motion_exploratory.trc`.
+- `data/scenarios/pipeline_principal/target_arm26_exploratory.mot`.
 
 ## Résultats
 

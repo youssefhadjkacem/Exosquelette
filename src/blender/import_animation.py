@@ -4,7 +4,7 @@ Run headless from the project root, e.g.:
 
     "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe" --background \
         "C:\\Users\\youss\\mpfb-data\\femme.blend" --python src/blender/import_animation.py -- \
-        --mot data/scenarios/video1_v2/target_arm26_exploratory.mot
+        --mot data/scenarios/pipeline_principal/target_arm26_exploratory.mot
 
 Only the right shoulder (upperarm01.R) and right elbow (lowerarm01.R) are
 keyframed. Everything else on the armature is reset to its rest pose and left

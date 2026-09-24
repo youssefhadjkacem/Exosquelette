@@ -303,7 +303,7 @@ def build_portable_artifact(comparison: dict, trajectories: list[dict]) -> dict:
         {
             "id": "comparison",
             "label": "Comparaison V2 calculée",
-            "path": "data/scenarios/video1_vs_test1_v2/comparison.json",
+            "path": "data/scenarios/essais/video1_vs_test1_v2/comparison.json",
             "query": {
                 "engine": "sqlite",
                 "sql": summary_sql,
@@ -320,7 +320,7 @@ def build_portable_artifact(comparison: dict, trajectories: list[dict]) -> dict:
         {
             "id": "trajectories",
             "label": "Trajectoires angulaires V2",
-            "path": "data/scenarios/video1_vs_test1_v2/comparison_trajectories.csv",
+            "path": "data/scenarios/essais/video1_vs_test1_v2/comparison_trajectories.csv",
             "query": {
                 "engine": "sqlite",
                 "sql": trajectory_sql,
@@ -473,11 +473,11 @@ def build_portable_artifact(comparison: dict, trajectories: list[dict]) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--video1-report", default="data/scenarios/video1_v2/motion_quality_v2.json")
-    parser.add_argument("--video1-motion", default="data/scenarios/video1_v2/motion_constrained.csv")
-    parser.add_argument("--test1-report", default="data/scenarios/test1_v2/motion_quality_v2.json")
-    parser.add_argument("--test1-motion", default="data/scenarios/test1_v2/motion_constrained.csv")
-    parser.add_argument("--output-dir", default="data/scenarios/video1_vs_test1_v2")
+    parser.add_argument("--video1-report", default="data/scenarios/pipeline_principal/motion_quality_v2.json")
+    parser.add_argument("--video1-motion", default="data/scenarios/pipeline_principal/motion_constrained.csv")
+    parser.add_argument("--test1-report", default="data/scenarios/essais/test1_v2/motion_quality_v2.json")
+    parser.add_argument("--test1-motion", default="data/scenarios/essais/test1_v2/motion_constrained.csv")
+    parser.add_argument("--output-dir", default="data/scenarios/essais/video1_vs_test1_v2")
     args = parser.parse_args(argv)
 
     output_dir = resolve(args.output_dir)

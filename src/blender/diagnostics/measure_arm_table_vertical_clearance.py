@@ -65,6 +65,6 @@ for frame in FRAMES:
 rig.location = original
 required = max(row["clearance_z_m"] for row in rows)
 report = {"samples": rows, "required_z_m": required, "required_z_cm": required * 100.0}
-output = Path("C:/Users/youss/exosquelette/data/scenarios/video1_v2/arm_table_vertical_clearance.json")
+output = Path("C:/Users/youss/exosquelette/data/scenarios/pipeline_principal/arm_table_vertical_clearance.json")
 output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(report, indent=2))

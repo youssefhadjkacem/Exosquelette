@@ -22,10 +22,10 @@
   },
   "processing": {
     "analysis_side": "right_for_direct_comparison_with_video1_v1",
-    "raw_csv": "data/scenarios/test1_v1/motion_raw.csv",
-    "smoothed_csv": "data/scenarios/test1_v1/motion_smoothed.csv",
-    "motion_report": "data/scenarios/test1_v1/motion_quality.json",
-    "scenario_report": "data/scenarios/test1_v1/scenario_report.json",
+    "raw_csv": "data/scenarios/essais/test1_v1/motion_raw.csv",
+    "smoothed_csv": "data/scenarios/essais/test1_v1/motion_smoothed.csv",
+    "motion_report": "data/scenarios/essais/test1_v1/motion_quality.json",
+    "scenario_report": "data/scenarios/essais/test1_v1/scenario_report.json",
     "cutoff_hz": 6.0,
     "filter_order": 4,
     "max_interpolation_gap_frames": 5,
@@ -43,9 +43,9 @@
   },
   "downstream": {
     "calibration": "config/calibration.json",
-    "trc": "data/scenarios/test1_v1/motion.trc",
+    "trc": "data/scenarios/essais/test1_v1/motion.trc",
     "opensim_model": "data/opensim/arm26_scaled.osim",
-    "opensim_results": "data/scenarios/test1_v1/opensim",
+    "opensim_results": "data/scenarios/essais/test1_v1/opensim",
     "mujoco_reference_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
     "rl_policy": "blocked_until_motion_opensim_and_exoskeleton_gates_pass"
   }
