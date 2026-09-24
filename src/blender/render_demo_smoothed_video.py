@@ -10,7 +10,7 @@ Run headless, e.g.:
     "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe" --background \
         "C:\\Users\\youss\\mpfb-data\\femme_demo_smoothed.blend" --python \
         src/blender/render_demo_smoothed_video.py -- \
-        --output data/scenarios/pipeline_principal/blender_animation_demo_smoothed.mp4
+        --output data/scenarios/scenario_principal/blender_animation_demo_smoothed.mp4
 """
 
 from __future__ import annotations

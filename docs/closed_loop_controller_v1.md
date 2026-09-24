@@ -44,8 +44,8 @@ Le statut final est `EXPLORATORY_PASS`.
 
 Les sorties sont :
 
-- `data/scenarios/pipeline_principal/closed_loop_report.json` ;
-- `data/scenarios/pipeline_principal/closed_loop_timeseries.csv`.
+- `data/scenarios/scenario_principal/closed_loop_report.json` ;
+- `data/scenarios/scenario_principal/closed_loop_timeseries.csv`.
 
 ## Hypothèses de sécurité
 

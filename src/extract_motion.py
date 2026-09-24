@@ -17,7 +17,7 @@ LANDMARKS = (
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--video", default="data/videos/video1.mp4")
+    parser.add_argument("--video", default="data/videos/video_principale.mp4")
     parser.add_argument("--output", default="data/motion_data_v2.csv")
     parser.add_argument("--show", action="store_true", help="Afficher la detection pendant l'extraction.")
     parser.add_argument("--min-detection-confidence", type=float, default=0.5)

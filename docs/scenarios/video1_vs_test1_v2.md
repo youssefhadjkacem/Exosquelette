@@ -52,7 +52,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_video_comparison_v2.ps1 `
   -RefreshExtraction
 ```
 
-Le dossier généré `data/scenarios/essais/video1_vs_test1_v2/` contient :
+Le dossier généré `data/scenarios/scenarios_secondaires/comparaison_video_principale_vs_secondaire/` contient :
 
 - `comparison.json` : décision et métriques structurées ;
 - `comparison_metrics.csv` : tableau synthétique ;

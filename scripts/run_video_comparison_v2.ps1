@@ -43,5 +43,5 @@ Invoke-Step "Tests automatiques" @(
 )
 
 Write-Host "`nComparaison V2 terminee." -ForegroundColor Green
-Write-Host "Rapport: data\scenarios\essais\video1_vs_test1_v2\comparison_report.md"
+Write-Host "Rapport: data\scenarios\scenarios_secondaires\comparaison_video_principale_vs_secondaire\comparison_report.md"
 Write-Host "Une video en echec reste bloquee pour OpenSim, MuJoCo et RL."

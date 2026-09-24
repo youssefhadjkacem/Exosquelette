@@ -73,7 +73,7 @@ Cette comparaison conserve les scénarios en échec comme preuves, sans les tran
 
 ## Résultats principaux
 
-Les fichiers générés sont placés dans `data/scenarios/pipeline_principal/` et restent exclus de Git :
+Les fichiers générés sont placés dans `data/scenarios/scenario_principal/` et restent exclus de Git :
 
 - `motion_quality_v2.json` ;
 - `target_arm26_mapping.json` ;

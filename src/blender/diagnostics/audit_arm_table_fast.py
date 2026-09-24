@@ -8,7 +8,7 @@ import bpy
 from mathutils.bvhtree import BVHTree
 
 
-OUTPUT = Path("C:/Users/youss/exosquelette/data/scenarios/pipeline_principal/arm_table_fast_audit.json")
+OUTPUT = Path("C:/Users/youss/exosquelette/data/scenarios/scenario_principal/arm_table_fast_audit.json")
 CSV = OUTPUT.with_suffix(".csv")
 ARM_GROUPS = {"upperarm01.R", "upperarm02.R", "lowerarm01.R", "lowerarm02.R", "wrist.R"}
 

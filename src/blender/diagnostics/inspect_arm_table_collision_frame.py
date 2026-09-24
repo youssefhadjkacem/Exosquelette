@@ -65,6 +65,6 @@ report = {
         for name in ("upperarm01.R", "lowerarm01.R", "wrist.R", "metacarpal3.R")
     },
 }
-output = Path("C:/Users/youss/exosquelette/data/scenarios/pipeline_principal/arm_table_collision_frame159.json")
+output = Path("C:/Users/youss/exosquelette/data/scenarios/scenario_principal/arm_table_collision_frame159.json")
 output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(report, indent=2))

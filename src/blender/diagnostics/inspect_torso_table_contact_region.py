@@ -43,7 +43,7 @@ def main():
             } if points else None,
         }
         evaluated.to_mesh_clear()
-    output = Path("C:/Users/youss/exosquelette/data/scenarios/pipeline_principal/torso_table_contact_region.json")
+    output = Path("C:/Users/youss/exosquelette/data/scenarios/scenario_principal/torso_table_contact_region.json")
     output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
 

@@ -98,12 +98,12 @@ maillage sur les frames de contrôle 1, 181, 541 et 1 081.
 
 ## Fichiers reproductibles
 
-- Trajectoire complète : `data/scenarios/pipeline_principal/wrist_board_coverage.csv`
-- Rapport calculé : `data/scenarios/pipeline_principal/wrist_board_coverage.json`
+- Trajectoire complète : `data/scenarios/scenario_principal/wrist_board_coverage.csv`
+- Rapport calculé : `data/scenarios/scenario_principal/wrist_board_coverage.json`
 - Contrôle avant recalage :
-  `data/scenarios/pipeline_principal/wrist_board_coverage_before_recenter.json`
+  `data/scenarios/scenario_principal/wrist_board_coverage_before_recenter.json`
 - Contrôle après recalage :
-  `data/scenarios/pipeline_principal/wrist_board_coverage_after_recenter.json`
+  `data/scenarios/scenario_principal/wrist_board_coverage_after_recenter.json`
 - Script : `src/blender/analyze_wrist_board_coverage.py`
 - Script de recalage : `src/blender/recenter_board_to_wrist_trajectory.py`
 - Script final de recalage de l'avatar :

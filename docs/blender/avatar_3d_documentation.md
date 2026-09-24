@@ -211,19 +211,19 @@ Sources officielles :
 
 ## Données reproductibles
 
-- rapport machine : `data/scenarios/pipeline_principal/avatar_metadata.json` ;
+- rapport machine : `data/scenarios/scenario_principal/avatar_metadata.json` ;
 - script d'inspection : `src/blender/inspect_avatar_metadata.py` ;
 - rapport des proportions :
-  `data/scenarios/pipeline_principal/avatar_arm_proportions_final.json` ;
+  `data/scenarios/scenario_principal/avatar_arm_proportions_final.json` ;
 - couverture finale du poignet :
-  `data/scenarios/pipeline_principal/wrist_board_coverage_arm_v2_final.json` ;
+  `data/scenarios/scenario_principal/wrist_board_coverage_arm_v2_final.json` ;
 - audit complet du bras contre la table :
-  `data/scenarios/pipeline_principal/arm_table_fast_audit.json` ;
+  `data/scenarios/scenario_principal/arm_table_fast_audit.json` ;
 - contrôle historique de l'ancien costume élégant contre la table (antérieur
   au remplacement du vêtement) :
-  `data/scenarios/pipeline_principal/suit_table_clearance_arm_v2_final.json` ;
+  `data/scenarios/scenario_principal/suit_table_clearance_arm_v2_final.json` ;
 - script de correction : `src/blender/adjust_visual_arm_proportions.py` ;
 - script de sélection du vêtement, des matériaux et de l'éclairage :
   `src/blender/apply_final_demo_materials.py` ;
 - captures couleur finales :
-  `data/scenarios/pipeline_principal/final_color_control_frames/`.
+  `data/scenarios/scenario_principal/final_color_control_frames/`.

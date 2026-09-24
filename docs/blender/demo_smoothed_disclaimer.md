@@ -30,8 +30,8 @@ biomecanique.
 
 Pour toute mesure ou affirmation scientifique, se referer exclusivement a :
 - `C:\Users\youss\mpfb-data\femme.blend` (reference, non modifiee par ce travail)
-- `data/scenarios/pipeline_principal/blender_animation_review.mp4` (rendu de reference)
-- Les donnees sources : `data/scenarios/pipeline_principal/target_arm26_exploratory.mot`
+- `data/scenarios/scenario_principal/blender_animation_review.mp4` (rendu de reference)
+- Les donnees sources : `data/scenarios/scenario_principal/target_arm26_exploratory.mot`
   et la chaine OpenSim associee.
 
 ## Pourquoi 1,5 Hz et pas 6 Hz (defaut pipeline)
@@ -49,7 +49,7 @@ cette raison.
 
 ## Validation geometrique (1081 frames completes, pas d'echantillon)
 
-Voir `data/scenarios/pipeline_principal/demo_smoothed/validation_report.json` pour le
+Voir `data/scenarios/scenario_principal/demo_smoothed/validation_report.json` pour le
 detail initial, et `validation_report_postheight.json` pour l'etat final
 apres la correction de hauteur ci-dessous. Criteres verifies apres chaque
 etape : poignet droit hors zone de `White_desk`, collisions triangle
@@ -73,7 +73,7 @@ combles par interpolation lineaire des frames voisines corrigees, pour
 eviter un saut visible plutot que d'utiliser le "meilleur effort" de la
 recherche (qui derivait vers une limite articulaire physique extreme).
 
-Voir `data/scenarios/pipeline_principal/demo_smoothed/height_correction_report.json`
+Voir `data/scenarios/scenario_principal/demo_smoothed/height_correction_report.json`
 pour le detail complet (avant/apres, segments interpoles, etc.).
 
 ## Fichiers produits par cette etape
@@ -83,6 +83,6 @@ pour le detail complet (avant/apres, segments interpoles, etc.).
 - `src/blender/apply_smoothed_arm_fcurves.py` — reinjecte les valeurs filtrees
 - `src/blender/validate_demo_smoothed.py` — revalidation geometrique 1081 frames
 - `src/blender/render_demo_smoothed_video.py` — rendu Eevee de la video de demo
-- `data/scenarios/pipeline_principal/demo_smoothed/` — JSON intermediaires + rapport
-- `data/scenarios/pipeline_principal/blender_animation_demo_smoothed.mp4` — video de demo
-- `data/scenarios/pipeline_principal/control_frames_demo_smoothed/` — 4 frames de controle
+- `data/scenarios/scenario_principal/demo_smoothed/` — JSON intermediaires + rapport
+- `data/scenarios/scenario_principal/blender_animation_demo_smoothed.mp4` — video de demo
+- `data/scenarios/scenario_principal/control_frames_demo_smoothed/` — 4 frames de controle

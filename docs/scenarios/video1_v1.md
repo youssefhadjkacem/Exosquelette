@@ -1,8 +1,8 @@
-# Scénario V1 — `video1.mp4`
+# Scénario V1 — `video_principale.mp4`
 
 ## 1. Objectif
 
-Cette première version transforme `data/videos/video1.mp4` en une expérience reproductible. Elle sert à vérifier la capture du mouvement avant toute interprétation biomécanique, simulation d’exosquelette ou utilisation du RL.
+Cette première version transforme `data/videos/video_principale.mp4` en une expérience reproductible. Elle sert à vérifier la capture du mouvement avant toute interprétation biomécanique, simulation d’exosquelette ou utilisation du RL.
 
 Le geste est identifié comme un geste de repassage. La vérification visuelle confirme que le fer est tenu par le bras droit anatomique, qui devient le bras fonctionnel étudié. La V1 ne prétend pas encore estimer correctement les efforts musculaires ni la fatigue.
 
@@ -10,7 +10,7 @@ Le geste est identifié comme un geste de repassage. La vérification visuelle c
 
 | Élément | Valeur V1 |
 |---|---:|
-| Vidéo | `data/videos/video1.mp4` |
+| Vidéo | `data/videos/video_principale.mp4` |
 | Résolution | 720 × 1280 |
 | Fréquence | 30 Hz |
 | Nombre d’images | 2 298 |
@@ -45,7 +45,7 @@ Le code de sortie vaut `1` lorsque le contrôle qualité échoue. C’est le com
 ## 4. Étapes réalisées
 
 ```text
-video1.mp4
+video_principale.mp4
    ↓ MediaPipe Pose, toutes les images conservées
 motion_raw.csv
    ↓ visibilité, interpolation courte, filtre Butterworth 6 Hz
@@ -57,7 +57,7 @@ PASS : calibration métrique puis OpenSim
 FAIL : correction de la capture avant de continuer
 ```
 
-Les artefacts générés sont isolés dans `data/scenarios/essais/video1_v1/`.
+Les artefacts générés sont isolés dans `data/scenarios/scenarios_secondaires/video_principale_methode_v1/`.
 
 ## 5. Résultat obtenu le 17 août 2026
 

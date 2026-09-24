@@ -4,7 +4,7 @@ Run headless, e.g.:
 
     "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe" --background \
         "C:\\Users\\youss\\mpfb-data\\femme.blend" --python src/blender/render_review_video.py -- \
-        --output data/scenarios/pipeline_principal/blender_animation_review.mp4
+        --output data/scenarios/scenario_principal/blender_animation_review.mp4
 """
 
 from __future__ import annotations

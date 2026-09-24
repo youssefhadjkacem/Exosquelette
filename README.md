@@ -21,7 +21,7 @@ Vidéo → Reconstruction   → OpenSim          → MuJoCo         → RL      
 
 ## Résultat de référence
 
-`data/scenarios/pipeline_principal/` contient **le** scénario retenu, de la vidéo à l'animation Blender. Tout ce qui est dans `data/scenarios/essais/` sont des tentatives explorées puis mises de côté : documentées et conservées comme preuve méthodologique, mais pas le résultat final.
+`data/scenarios/scenario_principal/` contient **le** scénario retenu, de la vidéo à l'animation Blender. Tout ce qui est dans `data/scenarios/scenarios_secondaires/` sont des tentatives explorées puis mises de côté : documentées et conservées comme preuve méthodologique, mais pas le résultat final.
 
 Livrables principaux (générés localement, non versionnés dans Git) :
 
@@ -43,7 +43,7 @@ Livrables principaux (générés localement, non versionnés dans Git) :
 Windows 11, PowerShell, depuis la racine. Installation unique : `powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1`.
 
 ```powershell
-# 1. Vidéo → mouvement lissé (data/videos/video1.mp4)
+# 1. Vidéo → mouvement lissé (data/videos/video_principale.mp4)
 .\.venv310\Scripts\python.exe .\scripts\run_scenario.py --config config\scenarios\video1_v1.json --report-on-fail
 
 # 2. Reconstruction V2, optimisation de l'exosquelette, contrôleurs MuJoCo, tests
@@ -51,9 +51,9 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_experimental_v2.ps1
 
 # 3. Animation Blender (l'avatar femme.blend est hors dépôt), puis assemblage de la vidéo
 $B = "C:\Program Files\Blender Foundation\Blender 5.1\blender.exe"; $A = "C:\Users\youss\mpfb-data\femme.blend"
-& $B --background $A --python src\blender\import_animation.py -- --mot data\scenarios\pipeline_principal\target_arm26_exploratory.mot
-& $B --background $A --python src\blender\render_final_demo_video.py -- --output "$PWD\data\scenarios\pipeline_principal\blender_animation_review.mp4"
-.\.venv310\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -framerate 30 -i data\scenarios\pipeline_principal\blender_animation_review_frames\frame_%04d.png -c:v libx264 -pix_fmt yuv420p data\scenarios\pipeline_principal\blender_animation_review.mp4
+& $B --background $A --python src\blender\import_animation.py -- --mot data\scenarios\scenario_principal\target_arm26_exploratory.mot
+& $B --background $A --python src\blender\render_final_demo_video.py -- --output "$PWD\data\scenarios\scenario_principal\blender_animation_review.mp4"
+.\.venv310\Lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -framerate 30 -i data\scenarios\scenario_principal\blender_animation_review_frames\frame_%04d.png -c:v libx264 -pix_fmt yuv420p data\scenarios\scenario_principal\blender_animation_review.mp4
 ```
 
 ## Aller plus loin

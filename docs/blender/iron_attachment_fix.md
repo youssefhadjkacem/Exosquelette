@@ -46,8 +46,8 @@ mentionnée dans la légende de la visualisation présentée à l'encadrant.
 
 Les rapports machine sont générés dans :
 
-- `data/scenarios/pipeline_principal/iron_attachment_final.json` ;
-- `data/scenarios/pipeline_principal/iron_scene_final_audit.json`.
+- `data/scenarios/scenario_principal/iron_attachment_final.json` ;
+- `data/scenarios/scenario_principal/iron_scene_final_audit.json`.
 
 ## Rendu de contrôle
 
@@ -55,7 +55,7 @@ Blender produit d'abord une séquence PNG Workbench en 960 x 540. Elle est
 ensuite encodée avec le binaire fourni par `imageio-ffmpeg` : H.264, `yuv420p`,
 30 fps. La vidéo finale contient 1 081 images et dure 36,03 secondes :
 
-`data/scenarios/pipeline_principal/blender_animation_review.mp4`
+`data/scenarios/scenario_principal/blender_animation_review.mp4`
 
 ## Sauvegarde et retour arrière
 

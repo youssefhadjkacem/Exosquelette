@@ -38,10 +38,10 @@ Les longueurs et la stature sont des hypothèses anthropométriques, pas des mes
 
 Cette commande produit :
 
-- `data/scenarios/pipeline_principal/motion_constrained.csv` ;
-- `data/scenarios/pipeline_principal/motion_quality_v2.json` ;
-- `data/scenarios/pipeline_principal/motion_exploratory.trc`.
-- `data/scenarios/pipeline_principal/target_arm26_exploratory.mot`.
+- `data/scenarios/scenario_principal/motion_constrained.csv` ;
+- `data/scenarios/scenario_principal/motion_quality_v2.json` ;
+- `data/scenarios/scenario_principal/motion_exploratory.trc`.
+- `data/scenarios/scenario_principal/target_arm26_exploratory.mot`.
 
 ## Résultats
 
@@ -90,7 +90,7 @@ Elle ne peut pas encore servir à conclure sur les moments articulaires, les act
 
 Ce mapping a été validé empiriquement (calcul direct des positions monde du poignet dans `femme.blend`, pas seulement une lecture visuelle) : l'axe Z est bien celui qui balaie le bras dans le plan vertical, et le signe inversé fait correctement monter le bras quand `r_shoulder_elev` augmente.
 
-**Limite constatée** : une comparaison image par image sur toute la séquence (8 instants répartis entre 0 et 36 s) contre `video1.mp4` montre que le rythme, l'amplitude et la direction du geste ne correspondent pas bien à la vidéo, malgré un mapping épaule/coude techniquement correct. Dans la vidéo, l'ouvrière est penchée en avant au niveau du buste et le fer reste bas, près de la planche, avec des allers-retours de faible amplitude. Dans le rendu, le buste reste rigide et vertical (aucune donnée de tronc dans arm26) et le bras seul doit couvrir toute l'amplitude du geste, ce qui produit de grands balayages qui ne ressemblent pas au mouvement réel.
+**Limite constatée** : une comparaison image par image sur toute la séquence (8 instants répartis entre 0 et 36 s) contre `video_principale.mp4` montre que le rythme, l'amplitude et la direction du geste ne correspondent pas bien à la vidéo, malgré un mapping épaule/coude techniquement correct. Dans la vidéo, l'ouvrière est penchée en avant au niveau du buste et le fer reste bas, près de la planche, avec des allers-retours de faible amplitude. Dans le rendu, le buste reste rigide et vertical (aucune donnée de tronc dans arm26) et le bras seul doit couvrir toute l'amplitude du geste, ce qui produit de grands balayages qui ne ressemblent pas au mouvement réel.
 
 Cette limite vient du modèle arm26 lui-même (2 DOF, pas de tronc), pas du mapping épaule/coude. Elle sera levée par le protocole V3 (deux caméras) uniquement si le modèle biomécanique retenu à ce moment-là inclut un degré de liberté de tronc ; sinon elle persistera même avec des angles épaule/coude mieux mesurés.
 

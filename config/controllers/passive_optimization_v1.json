@@ -2,7 +2,7 @@
   "schema_version": 1,
   "optimization_id": "passive_optimization_v1",
   "status": "EXPLORATORY_PRESCRIBED_KINEMATICS",
-  "target_motion": "data/scenarios/pipeline_principal/target_arm26_exploratory.mot",
+  "target_motion": "data/scenarios/scenario_principal/target_arm26_exploratory.mot",
   "unassisted_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
   "mass_only_model": "models/mujoco/exoskeleton/light_passive_v1.xml",
   "base_joint_damping_nms_per_rad": 0.05,
@@ -20,5 +20,5 @@
       "maximum_passive_torque_nm": 3.0
     }
   },
-  "output_report": "data/scenarios/pipeline_principal/passive_optimization_report.json"
+  "output_report": "data/scenarios/scenario_principal/passive_optimization_report.json"
 }

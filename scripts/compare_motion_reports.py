@@ -47,11 +47,11 @@ def preferred(first_name: str, first: dict, second_name: str, second: dict) -> d
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--video1-right", default="data/scenarios/essais/video1_v1/motion_quality.json")
-    parser.add_argument("--test1-right", default="data/scenarios/essais/test1_v1/motion_quality.json")
-    parser.add_argument("--video1-left", default="data/scenarios/essais/video1_v1/motion_quality_left.json")
-    parser.add_argument("--test1-left", default="data/scenarios/essais/test1_v1/motion_quality_left.json")
-    parser.add_argument("--output", default="data/scenarios/essais/video1_vs_test1/comparison.json")
+    parser.add_argument("--video1-right", default="data/scenarios/scenarios_secondaires/video_principale_methode_v1/motion_quality.json")
+    parser.add_argument("--test1-right", default="data/scenarios/scenarios_secondaires/video_secondaire_methode_v1/motion_quality.json")
+    parser.add_argument("--video1-left", default="data/scenarios/scenarios_secondaires/video_principale_methode_v1/motion_quality_left.json")
+    parser.add_argument("--test1-left", default="data/scenarios/scenarios_secondaires/video_secondaire_methode_v1/motion_quality_left.json")
+    parser.add_argument("--output", default="data/scenarios/scenarios_secondaires/comparaison_video_principale_vs_secondaire_methode_v1/comparison.json")
     args = parser.parse_args()
 
     reports = {

@@ -1,14 +1,14 @@
-# Comparaison — `video1.mp4` et `test1.mp4`
+# Comparaison — `video_principale.mp4` et `video_secondaire.mp4`
 
 ## Objectif et méthode
 
 Les deux vidéos ont été traitées avec MediaPipe Pose et exactement les mêmes paramètres : visibilité minimale de 0,5, interpolation maximale de 5 frames, filtre Butterworth d’ordre 4 à 6 Hz et seuil de variation des longueurs de 10 %.
 
-La comparaison ne change pas les seuils après observation des résultats. Les côtés droit et gauche sont analysés séparément, car la visibilité est très différente dans `test1.mp4`.
+La comparaison ne change pas les seuils après observation des résultats. Les côtés droit et gauche sont analysés séparément, car la visibilité est très différente dans `video_secondaire.mp4`.
 
 ## Caractéristiques des vidéos
 
-| Caractéristique | `video1.mp4` | `test1.mp4` |
+| Caractéristique | `video_principale.mp4` | `video_secondaire.mp4` |
 |---|---:|---:|
 | Résolution | 720 × 1280 | 640 × 360 |
 | Fréquence | 30 Hz | 25 Hz |
@@ -63,4 +63,4 @@ La différence entre les côtés montre que l’orientation de la caméra et les
 .\.venv310\Scripts\python.exe .\scripts\compare_motion_reports.py
 ```
 
-Le rapport généré est `data/scenarios/essais/video1_vs_test1/comparison.json`.
+Le rapport généré est `data/scenarios/scenarios_secondaires/comparaison_video_principale_vs_secondaire_methode_v1/comparison.json`.
