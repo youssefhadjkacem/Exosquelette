@@ -1,0 +1,28 @@
+{
+  "hair_object": "Human.ponytail01",
+  "clothes_object": "Human.female_casualsuit01",
+  "body_object": "Human",
+  "frames": [
+    {
+      "frame": 1,
+      "hair_vs_clothes_overlapping_triangle_pairs": 0,
+      "hair_vs_body_overlapping_triangle_pairs": 98
+    },
+    {
+      "frame": 181,
+      "hair_vs_clothes_overlapping_triangle_pairs": 0,
+      "hair_vs_body_overlapping_triangle_pairs": 98
+    },
+    {
+      "frame": 541,
+      "hair_vs_clothes_overlapping_triangle_pairs": 0,
+      "hair_vs_body_overlapping_triangle_pairs": 98
+    },
+    {
+      "frame": 1081,
+      "hair_vs_clothes_overlapping_triangle_pairs": 0,
+      "hair_vs_body_overlapping_triangle_pairs": 98
+    }
+  ],
+  "any_overlap": true
+}

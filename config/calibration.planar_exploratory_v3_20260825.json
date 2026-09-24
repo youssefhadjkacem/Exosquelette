@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "description": "Repere planaire V2 en metres. Exploration uniquement.",
+  "source_space": "camera_plane_fixed_segment_lengths",
+  "analysis_valid": false,
+  "scale_mm_per_unit": 1000.0,
+  "transform_4x4": [
+    [1.0, 0.0, 0.0, 0.0],
+    [0.0, 1.0, 0.0, 0.0],
+    [0.0, 0.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "calibration_method": "assumed anthropometry and planar reconstruction",
+  "subject_id": "anonymous_v3_test_20260825",
+  "calibration_date": null
+}

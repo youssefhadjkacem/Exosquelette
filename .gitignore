@@ -27,6 +27,7 @@ Thumbs.db
 data/videos/
 resources/mobl_arms/MoBL-ARMS Upper Extremity Model/
 *.mp4
+*.mov
 *.vtp
 
 # Local calibration and generated validation results
@@ -34,3 +35,4 @@ config/calibration.json
 data/results/
 data/scenarios/
 data/rl_sandbox/
+data/sessions/
