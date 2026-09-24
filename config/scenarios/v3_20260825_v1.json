@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "scenario_id": "v3_20260825_v1",
+  "title": "Premiere analyse du geste filme dans la capture session_capture_stereo_test (camera_1, vue laterale)",
+  "purpose": "Reproduire la chaine V1 existante (video1_v1) sur une nouvelle capture, meme methode, sujet anonyme distinct de video1.",
+  "study": {
+    "task": "geste de repassage filme",
+    "dominant_side": "right",
+    "task_arm": "right",
+    "task_arm_selection": "visual_confirmation_of_the_hand_holding_the_iron",
+    "subject_id": "anonymous_v3_test_20260825",
+    "subject_anthropometry_status": "missing",
+    "external_loads_status": "missing"
+  },
+  "acquisition": {
+    "video": "data/sessions/session_capture_stereo_test/video/synced/camera_1_vue_laterale_droite_synced.mov",
+    "expected_fps": 30.0,
+    "expected_frames": 1396,
+    "expected_duration_s": 46.533333,
+    "camera_count": 1,
+    "metric_calibration_status": "missing"
+  },
+  "processing": {
+    "raw_csv": "data/scenarios/scenarios_secondaires/video_stereo_cam1_methode_v1/motion_raw.csv",
+    "smoothed_csv": "data/scenarios/scenarios_secondaires/video_stereo_cam1_methode_v1/motion_smoothed.csv",
+    "motion_report": "data/scenarios/scenarios_secondaires/video_stereo_cam1_methode_v1/motion_quality.json",
+    "scenario_report": "data/scenarios/scenarios_secondaires/video_stereo_cam1_methode_v1/scenario_report.json",
+    "cutoff_hz": 6.0,
+    "filter_order": 4,
+    "max_interpolation_gap_frames": 5,
+    "minimum_visibility": 0.5,
+    "required_markers": ["r_shoulder", "r_elbow", "r_wrist"]
+  },
+  "quality_gates": {
+    "max_missing_rate": 0.02,
+    "max_segment_cv": 0.1,
+    "max_frame_gap": 0
+  },
+  "downstream": {
+    "calibration": "config/calibration_v3_20260825.json",
+    "trc": "data/scenarios/scenarios_secondaires/video_stereo_cam1_methode_v1/motion.trc",
+    "opensim_model": "data/opensim/arm26_scaled.osim",
+    "opensim_results": "data/scenarios/scenarios_secondaires/video_stereo_cam1_methode_v1/opensim",
+    "mujoco_reference_model": "models/mujoco/v2/mujoco_models_v2/arm26_scaled_cvt3_mujoco36.xml",
+    "rl_policy": "blocked_until_motion_opensim_and_exoskeleton_gates_pass"
+  }
+}
