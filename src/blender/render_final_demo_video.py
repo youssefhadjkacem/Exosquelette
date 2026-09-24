@@ -57,7 +57,10 @@ def main() -> None:
     scene.render.image_settings.file_format = "PNG"
     scene.render.image_settings.color_mode = "RGB"
 
-    output_path = Path(args["output"])
+    # An absolute path is required: this Blender build resolves relative
+    # render paths against the process's own working directory, not the
+    # invoking shell's cwd or the .blend file's location.
+    output_path = Path(args["output"]).resolve()
     frames_dir = output_path.parent / f"{output_path.stem}_frames"
     frames_dir.mkdir(parents=True, exist_ok=True)
     scene.render.filepath = str(frames_dir) + "/frame_"
